@@ -97,17 +97,6 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
                 <Mail className="w-4 h-4" />
                 <span className="hidden sm:inline">Email</span>
               </a>
-              <span aria-hidden="true">·</span>
-              <a
-                href={profile.gammaPortfolio}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-flex items-center gap-1.5 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                title="Gamma Presentation Portfolio"
-              >
-                <Globe className="w-4 h-4" />
-                <span className="hidden sm:inline">Portfolio Doc</span>
-              </a>
               {profile.github && (
                 <>
                   <span aria-hidden="true">·</span>

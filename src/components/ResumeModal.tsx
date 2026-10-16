@@ -58,15 +58,17 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
               <Printer className="w-3.5 h-3.5" />
               <span>Print / Save as PDF</span>
             </button>
-            <a
-              href={profile.gammaPortfolio}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 rounded-lg transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Gamma Doc</span>
-            </a>
+            {profile.github && (
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 rounded-lg transition-colors"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">GitHub</span>
+              </a>
+            )}
             <button
               onClick={onClose}
               aria-label="Close resume modal"

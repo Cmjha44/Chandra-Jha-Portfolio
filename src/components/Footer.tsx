@@ -43,15 +43,6 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
             >
               Email
             </a>
-            <span aria-hidden="true">·</span>
-            <a
-              href={profile.gammaPortfolio}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-            >
-              Portfolio Doc
-            </a>
             {profile.github && (
               <>
                 <span aria-hidden="true">·</span>

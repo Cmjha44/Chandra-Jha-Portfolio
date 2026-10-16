@@ -18,7 +18,6 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
-import { ProfileCustomizerDrawer } from './components/ProfileCustomizerDrawer';
 
 export default function App() {
   // Theme state with localStorage persistence
@@ -31,7 +30,7 @@ export default function App() {
   // Portfolio dataset state with localStorage persistence
   const [dataset, setDataset] = useState<PortfolioDataset>(() => {
     try {
-      const saved = localStorage.getItem('chandra_portfolio_dataset_v5');
+      const saved = localStorage.getItem('chandra_portfolio_dataset_v7');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.profile && parsed.projects) {
@@ -44,9 +43,8 @@ export default function App() {
     return initialPortfolioData;
   });
 
-  // Modal and drawer visibility states
+  // Modal visibility states
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   // Sync theme class to <html>
@@ -60,20 +58,6 @@ export default function App() {
     }
   }, [darkMode]);
 
-  const handleUpdateDataset = (newDataset: PortfolioDataset) => {
-    setDataset(newDataset);
-    try {
-      localStorage.setItem('chandra_portfolio_dataset_v5', JSON.stringify(newDataset));
-    } catch (e) {
-      console.error('Failed to save to localStorage', e);
-    }
-  };
-
-  const handleResetDefaults = () => {
-    setDataset(initialPortfolioData);
-    localStorage.removeItem('chandra_portfolio_dataset_v5');
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0B0F19] dark:text-slate-100 flex flex-col selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:bg-indigo-500/30 dark:selection:text-indigo-400">
       {/* Navigation Bar */}
@@ -81,7 +65,6 @@ export default function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onOpenResume={() => setIsResumeOpen(true)}
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
       />
 
       {/* Main Content Layout */}
@@ -127,15 +110,6 @@ export default function App() {
       <ProjectDetailModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
-      />
-
-      {/* Profile & Content Live Customizer Drawer */}
-      <ProfileCustomizerDrawer
-        isOpen={isCustomizerOpen}
-        onClose={() => setIsCustomizerOpen(false)}
-        dataset={dataset}
-        onUpdateDataset={handleUpdateDataset}
-        onResetDefaults={handleResetDefaults}
       />
     </div>
   );

@@ -10,8 +10,8 @@ export const initialPortfolioData: PortfolioDataset = {
     location: 'New York City Metropolitan Area',
     email: 'chandra.jha44@gmail.com',
     linkedin: 'https://www.linkedin.com/in/chandrajha44',
-    gammaPortfolio: 'https://gamma.app/docs/CHANDRA-JHA-swfki67sjc82xvw',
-    github: 'https://github.com/chandrajha44',
+    gammaPortfolio: '',
+    github: 'https://github.com/Cmjha44',
     avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQEOY1m1WJW7qg/profile-displayphoto-scale_400_400/B4DaDw5MqYJYAk-/0/1790747923791?e=1793836800&v=beta&t=NFxSyiOpnmBqmpGcq5UysvScFyVWs6Uyh9frQEmx_0o',
     coreExpertise: [
       {
@@ -337,8 +337,7 @@ export const initialPortfolioData: PortfolioDataset = {
       problemSolved:
         'Manual checks between clinic spreadsheets and state portals created critical data lags, delayed therapist compensation, and caused billing rejections. This solution implemented automated cross-referencing and anomaly detection.',
       techStack: ['Python', 'Pandas', 'SQL', 'Excel Macros', 'NYS EI Hub API/Schemas', 'Data Validation'],
-      liveUrl: 'https://gamma.app/docs/CHANDRA-JHA-swfki67sjc82xvw',
-      githubUrl: 'https://github.com/chandrajha44/ei-billing-reconciliation',
+      githubUrl: 'https://github.com/Cmjha44/ei-billing-reconciliation',
       impactMetrics: [
         '100% elimination of manual cross-referencing errors',
         '65% reduction in billing cycle turnarounds',
@@ -361,8 +360,7 @@ export const initialPortfolioData: PortfolioDataset = {
       problemSolved:
         'Navigating fragmented PDF documentation and static policy portals wasted hundreds of employee hours each quarter. This system delivers instant, cited answers with strict hallucination safeguards.',
       techStack: ['Generative AI', 'Vector DB', 'TypeScript', 'React', 'Tailwind CSS', 'FastAPI', 'LangChain'],
-      liveUrl: 'https://gamma.app/docs/CHANDRA-JHA-swfki67sjc82xvw',
-      githubUrl: 'https://github.com/chandrajha44/genai-policy-rag',
+      githubUrl: 'https://github.com/Cmjha44/genai-policy-rag',
       impactMetrics: [
         'Under 400ms semantic search response latency',
         '95%+ factual grounding accuracy with chunk attribution',
@@ -385,8 +383,7 @@ export const initialPortfolioData: PortfolioDataset = {
       problemSolved:
         'First-year and capstone students frequently struggled to navigate dispersed university IT systems. This portal provided a clean, unified on-ramp that reduced repetitive helpdesk inquiries.',
       techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Accessible HTML5', 'Brightspace APIs', 'ePortfolio CMS'],
-      liveUrl: 'https://gamma.app/docs/CHANDRA-JHA-swfki67sjc82xvw',
-      githubUrl: 'https://github.com/chandrajha44/cuny-edtech-mentor-portal',
+      githubUrl: 'https://github.com/Cmjha44/cuny-edtech-mentor-portal',
       impactMetrics: [
         'Adopted across 12+ Capstone studio classes',
         '500+ student tutorials and consultation sessions supported',
@@ -409,8 +406,7 @@ export const initialPortfolioData: PortfolioDataset = {
       problemSolved:
         'Traditional life insurance policy illustrations are dense, opaque, and intimidating for families. This interactive tool visualizes financial outcomes dynamically based on personalized client parameters.',
       techStack: ['TypeScript', 'React', 'Recharts', 'Tailwind CSS', 'Actuarial Calculation Engines'],
-      liveUrl: 'https://gamma.app/docs/CHANDRA-JHA-swfki67sjc82xvw',
-      githubUrl: 'https://github.com/chandrajha44/policylife-simulator',
+      githubUrl: 'https://github.com/Cmjha44/policylife-simulator',
       impactMetrics: [
         'Real-time multi-scenario cash flow modeling',
         'Visualized 30-year projections in <50ms',

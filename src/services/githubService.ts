@@ -63,7 +63,7 @@ export interface GitHubDataResult {
 const CACHE_KEY_PREFIX = 'gh_cache_';
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
-export async function fetchGitHubPortfolioData(username = 'ChandraJha44'): Promise<GitHubDataResult> {
+export async function fetchGitHubPortfolioData(username = 'Cmjha44'): Promise<GitHubDataResult> {
   const cacheKey = `${CACHE_KEY_PREFIX}${username.toLowerCase()}`;
 
   // Try reading from sessionStorage to respect rate limits

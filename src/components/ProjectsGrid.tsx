@@ -13,9 +13,9 @@ interface ProjectsGridProps {
 export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectProject }) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [githubUsername, setGithubUsername] = useState<string>('ChandraJha44');
+  const [githubUsername, setGithubUsername] = useState<string>('Cmjha44');
   const [isEditingUsername, setIsEditingUsername] = useState<boolean>(false);
-  const [usernameInput, setUsernameInput] = useState<string>('ChandraJha44');
+  const [usernameInput, setUsernameInput] = useState<string>('Cmjha44');
 
   // GitHub Live state
   const [ghUser, setGhUser] = useState<GitHubUser | null>(null);

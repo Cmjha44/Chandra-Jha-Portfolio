@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, FileText, Sliders } from 'lucide-react';
+import { Sun, Moon, Menu, X, FileText } from 'lucide-react';
 
 interface NavbarProps {
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   onOpenResume: () => void;
-  onOpenCustomizer: () => void;
+  onOpenCustomizer?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   darkMode,
   setDarkMode,
   onOpenResume,
-  onOpenCustomizer
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -71,24 +70,18 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Zone 3: Primary Action & Controls */}
           <div className="flex items-center gap-2.5 shrink-0">
-            {/* Live Customizer trigger */}
-            <button
-              onClick={onOpenCustomizer}
-              title="Customize Portfolio Profile"
-              aria-label="Customize Portfolio Profile"
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            >
-              <Sliders className="w-4 h-4" />
-            </button>
-
             {/* Dark/Light mode toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
               title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
             >
-              {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {darkMode ? (
+                <Sun className="w-4 h-4 text-amber-500" />
+              ) : (
+                <Moon className="w-4 h-4 text-indigo-600" />
+              )}
             </button>
 
             {/* Resume button */}

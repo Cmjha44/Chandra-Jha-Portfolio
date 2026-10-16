@@ -123,7 +123,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                 </a>
 
                 <a
-                  href={profile.github || 'https://github.com/chandrajha44'}
+                  href={profile.github || 'https://github.com/Cmjha44'}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-colors group"
@@ -135,7 +135,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                     <div>
                       <div className="text-xs text-slate-500 dark:text-slate-400">GitHub &amp; Open Source Work</div>
                       <div className="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                        github.com/chandrajha44
+                        github.com/Cmjha44
                       </div>
                     </div>
                   </div>
