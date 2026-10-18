@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { initialPortfolioData } from './data/portfolioData';
 import { PortfolioDataset, ProjectItem } from './types/portfolio';
+import { SupportedLanguage } from './data/translations';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ImpactStrip } from './components/ImpactStrip';
@@ -27,10 +28,26 @@ export default function App() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
+  // Language state with localStorage persistence
+  const [currentLang, setCurrentLang] = useState<SupportedLanguage>(() => {
+    const saved = localStorage.getItem('portfolio_lang');
+    if (saved === 'en' || saved === 'ne' || saved === 'es') return saved;
+    return 'en';
+  });
+
+  const handleSelectLang = (lang: SupportedLanguage) => {
+    setCurrentLang(lang);
+    try {
+      localStorage.setItem('portfolio_lang', lang);
+    } catch (e) {
+      console.warn('Lang save:', e);
+    }
+  };
+
   // Portfolio dataset state with localStorage persistence
   const [dataset, setDataset] = useState<PortfolioDataset>(() => {
     try {
-      const saved = localStorage.getItem('chandra_portfolio_dataset_v12');
+      const saved = localStorage.getItem('chandra_portfolio_dataset_v14');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.profile && parsed.projects) {
@@ -59,12 +76,14 @@ export default function App() {
   }, [darkMode]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0B0F19] dark:text-slate-100 flex flex-col selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:bg-indigo-500/30 dark:selection:text-indigo-400">
-      {/* Navigation Bar */}
+    <div className="min-h-screen bg-[#FAF9F6] text-stone-900 dark:bg-[#151413] dark:text-stone-100 flex flex-col selection:bg-stone-200 selection:text-stone-900 dark:selection:bg-stone-800 dark:selection:text-stone-100">
+      {/* Navigation Bar with Language Switcher */}
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         onOpenResume={() => setIsResumeOpen(true)}
+        currentLang={currentLang}
+        onSelectLang={handleSelectLang}
       />
 
       {/* Main Content Layout */}
@@ -72,13 +91,20 @@ export default function App() {
         <Hero
           profile={dataset.profile}
           onOpenResume={() => setIsResumeOpen(true)}
+          currentLang={currentLang}
         />
 
         <ImpactStrip stats={dataset.stats} />
 
-        <AboutSection profile={dataset.profile} />
+        <AboutSection
+          profile={dataset.profile}
+          currentLang={currentLang}
+        />
 
-        <SkillsSection skills={dataset.skills} />
+        <SkillsSection
+          skills={dataset.skills}
+          currentLang={currentLang}
+        />
 
         <ExperienceTimeline experience={dataset.experience} />
 
@@ -93,7 +119,10 @@ export default function App() {
           onSelectProject={(proj) => setSelectedProject(proj)}
         />
 
-        <ContactSection profile={dataset.profile} />
+        <ContactSection
+          profile={dataset.profile}
+          currentLang={currentLang}
+        />
       </main>
 
       {/* Minimalist Contact & Footer */}

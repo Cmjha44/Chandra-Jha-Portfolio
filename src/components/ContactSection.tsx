@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Linkedin, Github, Send, CheckCircle2, AlertCircle, ArrowUpRight } from 'lucide-react';
 import { ProfileData } from '../types/portfolio';
+import { SupportedLanguage, translations } from '../data/translations';
 
 interface ContactSectionProps {
   profile: ProfileData;
+  currentLang: SupportedLanguage;
 }
 
 interface SavedInquiry {
@@ -15,7 +17,9 @@ interface SavedInquiry {
   date: string;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ profile, currentLang }) => {
+  const t = translations[currentLang].contact;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -95,13 +99,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
           <div className="md:col-span-5 flex flex-col justify-between">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
-                Get In Touch
+                {t.kicker}
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-4">
-                Connect &amp; Record an Inquiry
+                {t.headline}
               </h2>
               <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed mb-8">
-                Visitors, recruiters, and collaborators can leave their information and inquiry below for the record. I will review and respond promptly.
+                {t.subhead}
               </p>
 
               {/* Direct channels */}
@@ -114,7 +118,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                     <Mail className="w-4 h-4 text-stone-700 dark:text-stone-300" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-stone-500 dark:text-stone-400">Direct Email</div>
+                    <div className="text-[11px] text-stone-500 dark:text-stone-400">{t.directEmail}</div>
                     <div className="text-sm font-medium text-stone-900 dark:text-stone-100">
                       {profile.email}
                     </div>
@@ -126,7 +130,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                     <MapPin className="w-4 h-4 text-stone-700 dark:text-stone-300" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-stone-500 dark:text-stone-400">Location</div>
+                    <div className="text-[11px] text-stone-500 dark:text-stone-400">{t.location}</div>
                     <div className="text-sm font-medium text-stone-900 dark:text-stone-100">
                       {profile.location}
                     </div>
@@ -180,10 +184,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
           <div className="md:col-span-7">
             <div className="p-7 sm:p-8 rounded-2xl bg-white dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800 shadow-2xs">
               <h3 className="font-serif text-xl font-medium text-stone-900 dark:text-stone-100 mb-1.5">
-                Leave Your Information
+                {t.formTitle}
               </h3>
               <p className="text-xs text-stone-500 dark:text-stone-400 mb-6">
-                Please provide your contact information and notes to record your inquiry.
+                {t.formSubhead}
               </p>
 
               {submitted ? (
@@ -193,10 +197,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                   </div>
                   <div>
                     <h4 className="font-serif text-base font-semibold text-stone-900 dark:text-stone-100">
-                      Information Recorded Successfully
+                      {t.successTitle}
                     </h4>
                     <p className="text-xs text-stone-600 dark:text-stone-300 mt-1 max-w-sm mx-auto">
-                      Thank you, <span className="font-semibold">{formData.name}</span>. Your inquiry regarding &ldquo;{formData.subject}&rdquo; has been saved to the records log (Ref: {lastSubmissionId}).
+                      Thank you, <span className="font-semibold">{formData.name}</span>. {t.successDesc} (Ref: {lastSubmissionId}).
                     </p>
                   </div>
 
@@ -206,7 +210,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                       className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-stone-100 bg-stone-900 hover:bg-stone-800 dark:text-stone-900 dark:bg-stone-100 dark:hover:bg-stone-200 rounded-md transition-colors"
                     >
                       <Mail className="w-3.5 h-3.5" />
-                      <span>Send Direct via Email</span>
+                      <span>{t.sendEmailBtn}</span>
                     </button>
                     <button
                       onClick={() => {
@@ -215,7 +219,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                       }}
                       className="px-4 py-2 text-xs font-medium text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                     >
-                      Record Another Entry
+                      {t.recordAnother}
                     </button>
                   </div>
                 </div>
@@ -225,7 +229,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                     {/* Name */}
                     <div>
                       <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1.5">
-                        Your Full Name <span className="text-amber-600">*</span>
+                        {t.nameLabel} <span className="text-amber-600">*</span>
                       </label>
                       <input
                         type="text"
@@ -249,7 +253,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                     {/* Email */}
                     <div>
                       <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1.5">
-                        Your Email Address <span className="text-amber-600">*</span>
+                        {t.emailLabel} <span className="text-amber-600">*</span>
                       </label>
                       <input
                         type="email"
@@ -274,7 +278,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                   {/* Subject */}
                   <div>
                     <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1.5">
-                      Subject / Topic of Interest <span className="text-amber-600">*</span>
+                      {t.subjectLabel} <span className="text-amber-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -298,7 +302,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                   {/* Message */}
                   <div>
                     <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1.5">
-                      Message / Record Notes <span className="text-amber-600">*</span>
+                      {t.messageLabel} <span className="text-amber-600">*</span>
                     </label>
                     <textarea
                       rows={4}
@@ -331,11 +335,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                       className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-medium text-stone-100 bg-stone-900 hover:bg-stone-800 dark:text-stone-900 dark:bg-stone-100 dark:hover:bg-stone-200 rounded-md transition-colors disabled:opacity-50"
                     >
                       {isSubmitting ? (
-                        <span>Recording...</span>
+                        <span>{t.submitting}</span>
                       ) : (
                         <>
                           <Send className="w-3.5 h-3.5" />
-                          <span>Submit for Record</span>
+                          <span>{t.submitBtn}</span>
                         </>
                       )}
                     </button>

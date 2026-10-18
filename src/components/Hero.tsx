@@ -1,13 +1,17 @@
 import React from 'react';
 import { Mail, Linkedin, Github, FileText, ArrowRight } from 'lucide-react';
 import { ProfileData } from '../types/portfolio';
+import { SupportedLanguage, translations } from '../data/translations';
 
 interface HeroProps {
   profile: ProfileData;
   onOpenResume: () => void;
+  currentLang: SupportedLanguage;
 }
 
-export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
+export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume, currentLang }) => {
+  const t = translations[currentLang].hero;
+
   return (
     <section className="pt-12 pb-20 md:pt-20 md:pb-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,26 +20,26 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
           <div className="md:col-span-8 flex flex-col justify-center">
             {/* Minimalist kicker */}
             <div className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-4">
-              Chandra Jha · Portfolio &amp; Resume
+              {t.kicker}
             </div>
 
             {/* Large Serif Headline */}
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-stone-900 dark:text-stone-100 leading-[1.2] mb-5 text-balance">
-              Systems-level AI management and workflow orchestration.
+              {t.headline}
             </h1>
 
             {/* Subheadline */}
             <p className="text-base sm:text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mb-8">
-              Graduate scholar in Generative AI at CUNY SPS with deep experience in process optimization, life insurance protection, and healthcare data reconciliation.
+              {t.summary}
             </p>
 
             {/* Action Bar */}
-            <div className="flex flex-wrap items-center gap-4 mb-8">
+            <div className="flex flex-wrap items-center gap-3.5 mb-6">
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-stone-100 bg-stone-900 hover:bg-stone-800 dark:text-stone-900 dark:bg-stone-100 dark:hover:bg-stone-200 rounded-md transition-colors"
               >
-                <span>Get in Touch</span>
+                <span>{t.getInTouch}</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
@@ -44,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
                 className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 border border-stone-300 dark:border-stone-700 rounded-md hover:bg-stone-100 dark:hover:bg-stone-800/60 transition-colors"
               >
                 <FileText className="w-4 h-4 text-stone-500" />
-                <span>View Resume</span>
+                <span>{t.viewResume}</span>
               </button>
             </div>
 

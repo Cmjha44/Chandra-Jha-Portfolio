@@ -1,31 +1,35 @@
 import React from 'react';
 import { Terminal, Cpu, ShieldCheck, Database, Check } from 'lucide-react';
 import { SkillCategory } from '../types/portfolio';
+import { SupportedLanguage, translations } from '../data/translations';
 
 interface SkillsSectionProps {
   skills: SkillCategory[];
+  currentLang: SupportedLanguage;
 }
 
-export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => {
+export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, currentLang }) => {
+  const t = translations[currentLang].skills;
+
   const coreCompetencies = [
     {
-      title: 'Python programming',
-      description: 'Scripting, workflow automation, and structured data manipulation fundamentals.',
+      title: t.pythonTitle,
+      description: t.pythonDesc,
       icon: Terminal
     },
     {
-      title: 'Google AI Studio orchestration',
-      description: 'Generative AI API integration, prompt design, and workflow orchestration.',
+      title: t.aiStudioTitle,
+      description: t.aiStudioDesc,
       icon: Cpu
     },
     {
-      title: 'DevSecOps governance',
-      description: 'Responsible AI compliance, ethical model boundaries, and secure operations.',
+      title: t.devSecOpsTitle,
+      description: t.devSecOpsDesc,
       icon: ShieldCheck
     },
     {
-      title: 'Vector databases',
-      description: 'Semantic vector indexing, embedding search, and retrieval-augmented architectures.',
+      title: t.vectorDbTitle,
+      description: t.vectorDbDesc,
       icon: Database
     }
   ];
@@ -36,13 +40,13 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => {
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
           <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
-            Core Competencies &amp; Skills
+            {t.kicker}
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-4">
-            Technical foundation and operational capabilities.
+            {t.headline}
           </h2>
           <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed">
-            Focused on systems-level AI management, structured workflow design, and regulated operational environments.
+            {t.subhead}
           </p>
         </div>
 
