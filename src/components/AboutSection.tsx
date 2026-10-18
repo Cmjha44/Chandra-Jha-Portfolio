@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Activity, Database, CheckCircle2 } from 'lucide-react';
+import { Compass, Trees, Mountain } from 'lucide-react';
 import { ProfileData } from '../types/portfolio';
 
 interface AboutSectionProps {
@@ -7,69 +7,64 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ profile }) => {
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Cpu':
-        return <Cpu className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
-      case 'Activity':
-        return <Activity className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
-      case 'Database':
-        return <Database className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
-      default:
-        return <Cpu className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />;
-    }
-  };
-
   return (
-    <section id="about" className="py-20 scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <span className="text-xs font-semibold tracking-wider uppercase text-indigo-600 dark:text-indigo-400">
-            Background &amp; Philosophy
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-2 mb-4">
-            Transforming Complex Workflows into Clear, Intelligent Systems
-          </h2>
-          <div className="space-y-4 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            <p>
-              I am pursuing a Master of Science in Generative Artificial Intelligence at the CUNY School of Professional Studies, building on an academic and operational foundation that bridges business administration, data systems, and process improvement.
-            </p>
-            <p>
-              My professional journey spans mission-critical domains: reconciling pediatric healthcare data against the NYS Early Intervention (EI) Hub, guiding clients through life insurance risk protection and living benefits, mentoring university students in instructional technology, and training in commercial aviation systems checklist protocols. Across all these domains, my focus is identical: diagnosing bottlenecks, eliminating discrepancies, and designing scalable automated solutions.
-            </p>
-          </div>
-        </div>
+    <section id="about" className="py-20 border-t border-stone-200/80 dark:border-stone-800/80 scroll-mt-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center">
+          {/* Left Column: Reflective Narrative */}
+          <div className="md:col-span-7">
+            <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
+              About &amp; Perspective
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-6">
+              Precision in systems, grounded in the outdoors.
+            </h2>
 
-        {/* 3 Core Expertise Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {profile.coreExpertise.map((item, idx) => (
-            <div
-              key={idx}
-              className="group p-6 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all duration-200"
-            >
-              <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900/50 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
-                {getIcon(item.icon)}
-              </div>
-
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                {item.title}
-              </h3>
-
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
-                {item.description}
+            <div className="space-y-4 text-base text-stone-600 dark:text-stone-300 leading-relaxed">
+              <p>
+                My professional background is rooted in deep administrative diligence and systematic problem solving. From reconciling patient treatment records against the official NYS Early Intervention (EI) Hub to helping families navigate Universal Index Life (IUL) and Term insurance protection, I focus on bringing clarity to intricate rules and data.
               </p>
+              <p>
+                Currently pursuing my Master of Science in Generative AI at the CUNY School of Professional Studies, I examine how machine learning models, vector databases, and workflow orchestration can be managed responsibly to create genuine organizational value.
+              </p>
+              <p>
+                Beyond work and study, I find balance along hiking trails, in the quiet expanse of pine forests, and on unhurried adventures in nature. Stepping into the outdoors provides the stillness and perspective needed to approach complex technical challenges with patience and clear intent.
+              </p>
+            </div>
 
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 space-y-2">
-                {item.points.map((pt, pIdx) => (
-                  <div key={pIdx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-indigo-500 shrink-0 mt-0.5" />
-                    <span>{pt}</span>
-                  </div>
-                ))}
+            <div className="mt-8 flex items-center gap-6 text-xs text-stone-500 dark:text-stone-400 font-mono">
+              <div className="flex items-center gap-1.5">
+                <Mountain className="w-4 h-4 text-stone-600 dark:text-stone-300" />
+                <span>Trail Hiking</span>
+              </div>
+              <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
+              <div className="flex items-center gap-1.5">
+                <Trees className="w-4 h-4 text-stone-600 dark:text-stone-300" />
+                <span>Quiet Wilderness</span>
+              </div>
+              <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
+              <div className="flex items-center gap-1.5">
+                <Compass className="w-4 h-4 text-stone-600 dark:text-stone-300" />
+                <span>Thoughtful Exploration</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right Column: Nature & Hiking Themed Image */}
+          <div className="md:col-span-5">
+            <div className="relative rounded-2xl overflow-hidden border border-stone-200/80 dark:border-stone-800 shadow-xs bg-stone-100 dark:bg-stone-900">
+              <img
+                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80"
+                alt="Tranquil alpine mountain ridge and hiking wilderness"
+                className="w-full aspect-[4/3] object-cover"
+                loading="lazy"
+              />
+              <div className="p-4 bg-stone-50/90 dark:bg-stone-900/90 border-t border-stone-200/80 dark:border-stone-800 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+                <span className="font-serif italic">Alpine trail reflections</span>
+                <span className="font-mono text-[11px]">Nature &amp; Hiking</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

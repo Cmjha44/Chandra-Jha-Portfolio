@@ -5,13 +5,12 @@ interface NavbarProps {
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   onOpenResume: () => void;
-  onOpenCustomizer?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   darkMode,
   setDarkMode,
-  onOpenResume,
+  onOpenResume
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -27,111 +26,99 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Education', href: '#education' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' }
   ];
-
-  const handleLinkClick = () => {
-    setMobileMenuOpen(false);
-  };
 
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-200 ${
         scrolled
-          ? 'bg-slate-50/90 dark:bg-[#0B0F19]/90 backdrop-blur-md shadow-xs border-b border-slate-200/80 dark:border-slate-800/80'
+          ? 'bg-[#FAF9F6]/90 dark:bg-[#151413]/90 backdrop-blur-md shadow-xs border-b border-stone-200/80 dark:border-stone-800/80'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-8 h-16">
-          {/* Zone 1: Single text wordmark */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-6 h-16">
+          {/* Wordmark */}
           <a
             href="#"
-            className="text-lg font-bold tracking-tight text-slate-900 dark:text-white whitespace-nowrap shrink-0 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+            className="font-serif text-lg font-semibold tracking-tight text-stone-900 dark:text-stone-100 whitespace-nowrap shrink-0 hover:opacity-80 transition-opacity"
           >
             Chandra Jha
           </a>
 
-          {/* Zone 2: 4-6 clean single-line nav links */}
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+          {/* Clean Nav Links */}
+          <nav className="hidden md:flex items-center gap-7 text-sm text-stone-600 dark:text-stone-300">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors whitespace-nowrap shrink-0"
+                className="hover:text-stone-900 dark:hover:text-stone-100 transition-colors whitespace-nowrap"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Zone 3: Primary Action & Controls */}
+          {/* Action & Toggle */}
           <div className="flex items-center gap-2.5 shrink-0">
-            {/* Dark/Light mode toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
               title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
               aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="p-2 text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900"
+              className="p-2 text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 rounded-md hover:bg-stone-200/60 dark:hover:bg-stone-800 transition-colors border border-stone-200/80 dark:border-stone-800 bg-[#FAF9F6] dark:bg-[#151413]"
             >
-              {darkMode ? (
-                <Sun className="w-4 h-4 text-amber-500" />
-              ) : (
-                <Moon className="w-4 h-4 text-indigo-600" />
-              )}
+              {darkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-stone-700" />}
             </button>
 
-            {/* Resume button */}
             <button
               onClick={onOpenResume}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 dark:bg-indigo-500 dark:hover:bg-indigo-600 rounded-lg shadow-xs transition-colors whitespace-nowrap shrink-0"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-stone-100 bg-stone-900 hover:bg-stone-800 dark:text-stone-900 dark:bg-stone-100 dark:hover:bg-stone-200 rounded-md transition-colors whitespace-nowrap"
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>View Resume</span>
+              <span>Resume</span>
             </button>
 
-            {/* Mobile Hamburger toggle */}
+            {/* Mobile menu trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 md:hidden text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
               aria-label="Toggle navigation menu"
-              className="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0B0F19]/95 backdrop-blur-md px-4 pt-2 pb-6 space-y-2">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={handleLinkClick}
-              className="block px-3 py-2 text-base font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className="pt-2">
+        {/* Mobile dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-stone-200 dark:border-stone-800 flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 py-1"
+              >
+                {link.name}
+              </a>
+            ))}
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenResume();
               }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-medium text-stone-100 bg-stone-900 dark:text-stone-900 dark:bg-stone-100 rounded-md mt-2"
             >
-              <FileText className="w-4 h-4" />
-              <span>View Resume / CV</span>
+              <FileText className="w-3.5 h-3.5" />
+              <span>View Resume</span>
             </button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };

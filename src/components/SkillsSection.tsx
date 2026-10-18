@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, CheckCircle2 } from 'lucide-react';
+import { Terminal, Cpu, ShieldCheck, Database, Check } from 'lucide-react';
 import { SkillCategory } from '../types/portfolio';
 
 interface SkillsSectionProps {
@@ -7,52 +7,104 @@ interface SkillsSectionProps {
 }
 
 export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills }) => {
+  const coreCompetencies = [
+    {
+      title: 'Python programming',
+      description: 'Scripting, workflow automation, and structured data manipulation fundamentals.',
+      icon: Terminal
+    },
+    {
+      title: 'Google AI Studio orchestration',
+      description: 'Generative AI API integration, prompt design, and workflow orchestration.',
+      icon: Cpu
+    },
+    {
+      title: 'DevSecOps governance',
+      description: 'Responsible AI compliance, ethical model boundaries, and secure operations.',
+      icon: ShieldCheck
+    },
+    {
+      title: 'Vector databases',
+      description: 'Semantic vector indexing, embedding search, and retrieval-augmented architectures.',
+      icon: Database
+    }
+  ];
+
   return (
-    <section id="skills" className="py-20 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/20 scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 border-t border-stone-200/80 dark:border-stone-800/80 scroll-mt-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-14">
-          <span className="text-xs font-semibold tracking-wider uppercase text-indigo-600 dark:text-indigo-400">
-            Technical &amp; Operational Stack
+        <div className="max-w-3xl mb-12">
+          <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
+            Core Competencies &amp; Skills
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-2 mb-4">
-            Skills &amp; Domain Competencies
+          <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-4">
+            Technical foundation and operational capabilities.
           </h2>
-          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            Organized across modern artificial intelligence, lean process engineering, enterprise management platforms, and quantitative analysis.
+          <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed">
+            Focused on systems-level AI management, structured workflow design, and regulated operational environments.
           </p>
         </div>
 
-        {/* Skills Categories Grid */}
+        {/* 4 Highlighted Core Competencies */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+          {coreCompetencies.map((comp) => {
+            const Icon = comp.icon;
+            return (
+              <div
+                key={comp.title}
+                className="p-5 rounded-xl bg-stone-50/80 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-stone-200/60 dark:bg-stone-800 flex items-center justify-center mb-3 text-stone-700 dark:text-stone-300">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-serif text-base font-semibold text-stone-900 dark:text-stone-100 mb-1.5">
+                    {comp.title}
+                  </h3>
+                  <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+                    {comp.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Categorized Skills Breakdown */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((cat, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-2xs hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800 shadow-2xs"
             >
-              <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1">
-                  {cat.categoryName}
-                </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mb-5 leading-relaxed">
-                  {cat.summary}
-                </p>
+              <h4 className="font-serif text-base font-semibold text-stone-900 dark:text-stone-100 mb-1">
+                {cat.categoryName}
+              </h4>
+              <p className="text-xs text-stone-500 dark:text-stone-400 mb-4 leading-relaxed">
+                {cat.summary}
+              </p>
 
-                <div className="space-y-2.5">
-                  {cat.skills.map((skill, sIdx) => (
-                    <div
-                      key={sIdx}
-                      className="flex items-center justify-between text-xs py-1 border-b border-slate-100 dark:border-slate-800/60 last:border-b-0"
+              <div className="space-y-2">
+                {cat.skills.map((skill, sIdx) => (
+                  <div
+                    key={sIdx}
+                    className="flex items-center justify-between text-xs py-1 border-b border-stone-100 dark:border-stone-800/60 last:border-b-0"
+                  >
+                    <span
+                      className={
+                        skill.highlighted
+                          ? 'font-medium text-stone-900 dark:text-stone-100'
+                          : 'text-stone-600 dark:text-stone-300'
+                      }
                     >
-                      <span className={`font-medium ${skill.highlighted ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : 'text-slate-700 dark:text-slate-300'}`}>
-                        {skill.name}
-                      </span>
-                      {skill.highlighted && (
-                        <CheckCircle2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                      )}
-                    </div>
-                  ))}
-                </div>
+                      {skill.name}
+                    </span>
+                    {skill.highlighted && (
+                      <Check className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400 shrink-0" />
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           ))}

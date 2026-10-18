@@ -3,72 +3,38 @@ import { PortfolioDataset } from '../types/portfolio';
 export const initialPortfolioData: PortfolioDataset = {
   profile: {
     name: 'Chandra Jha',
-    headline: 'Generative AI & Data | Workflow Automation & Process Optimization',
-    subheadline: 'MS in GenAI @ CUNY SPS · Google AI & Cybersecurity Certified · Six Sigma Green Belt',
+    headline: 'Systems-level AI management and workflow orchestration.',
+    subheadline: 'Master of Science in Generative AI Candidate @ CUNY SPS · Information Systems · Six Sigma Green Belt',
     summary:
-      'I sit at the intersection of Generative AI, data systems, and operational workflow design. Currently pursuing my Master’s in Generative AI at CUNY SPS, I combine advanced technical training with hands-on experience solving real-world operational bottlenecks. With a background in Information Systems, healthcare operations, and process improvement, I build practical solutions that translate messy data and fragmented processes into streamlined, automated workflows.',
+      'I specialize in systems-level AI management and workflow orchestration, translating advanced Generative AI capabilities into reliable, human-centered organizational processes. Alongside my technical and administrative background in early childhood healthcare data audits and life insurance protection, I draw balance and perspective from hiking mountain trails, exploring quiet natural landscapes, and thoughtful, unhurried adventures.',
     location: 'New York City Metropolitan Area',
     email: 'chandra.jha44@gmail.com',
     linkedin: 'https://www.linkedin.com/in/chandrajha44',
     gammaPortfolio: '',
     github: 'https://github.com/Cmjha44',
     avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQEOY1m1WJW7qg/profile-displayphoto-scale_400_400/B4DaDw5MqYJYAk-/0/1790747923791?e=1793836800&v=beta&t=NFxSyiOpnmBqmpGcq5UysvScFyVWs6Uyh9frQEmx_0o',
-    coreExpertise: [
-      {
-        title: 'AI & Technical Solutions',
-        description: 'Architecting practical Generative AI systems, RAG document pipelines, automated prompts, and multi-tool agentic workflows.',
-        icon: 'Cpu',
-        points: [
-          'Generative AI workflows & prompt engineering',
-          'System integration & API bridging',
-          'RAG architectures & vector search',
-          'Technical mentorship & onboarding'
-        ]
-      },
-      {
-        title: 'Operations & Quality Excellence',
-        description: 'Applying Six Sigma Green Belt rigor, DMAIC methodologies, and process mapping to identify and eliminate operational bottlenecks.',
-        icon: 'Activity',
-        points: [
-          'Process mapping & cycle-time optimization',
-          'Six Sigma Green Belt defect reduction',
-          'Operational discrepancy root-cause analysis',
-          'Internal audit & compliance validation'
-        ]
-      },
-      {
-        title: 'Enterprise Data & Systems',
-        description: 'Managing enterprise-grade platforms (CUNYfirst, Brightspace, EI Hub), database synchronization, and automated structured reporting.',
-        icon: 'Database',
-        points: [
-          'Cross-platform database reconciliation',
-          'Enterprise platforms (CUNYfirst, Brightspace, EI Hub)',
-          'Automated Excel & SQL data pipelines',
-          'Structured management reporting'
-        ]
-      }
-    ]
+    coreExpertise: []
   },
   stats: [
     {
-      value: '4x',
-      label: "Dean's List Honors",
-      caption: 'Consecutive academic distinction across CUNY SPS and LaGuardia CC'
+      value: 'MS AI',
+      label: 'CUNY SPS Scholar',
+      caption: 'Applied generative AI architecture and organizational workflow design'
     },
     {
-      value: '5+ Yrs',
-      label: 'Financial & Advisory Impact',
-      caption: 'Client risk management, policy advisory, and legacy planning'
+      value: '6 Yrs',
+      label: 'Financial Protection',
+      caption: 'Universal Index Life (IUL) & Term insurance advisory'
+    },
+    {
+      value: '4x',
+      label: "Dean's List Honors",
+      caption: 'Academic distinction across CUNY SPS and LaGuardia CC'
     },
     {
       value: '100%',
       label: 'Data Reconciliation',
-      caption: 'Discrepancy-free record alignment for pediatric healthcare billing'
-    },
-    {
-      value: '500+',
-      label: 'Students & Faculty Mentored',
-      caption: 'Hands-on instruction in M365, ePortfolios, and learning platforms'
+      caption: 'NYS Early Intervention Hub pediatric billing accuracy'
     }
   ],
   experience: [
@@ -79,14 +45,21 @@ export const initialPortfolioData: PortfolioDataset = {
       location: 'New York City Metropolitan Area',
       period: 'March 2023 — September 2026',
       isCurrent: false,
-      department: 'Financial Services & Risk Protection',
+      department: 'Financial Protection & Policy Advisory',
       achievements: [
-        'Educates clients on holistic financial security, income replacement, debt coverage, and long-term wealth preservation.',
-        'Structures tailored life insurance solutions highlighting living benefits, cash-value accumulation, policy loans, and critical illness protections.',
-        'Guides policyholders through tax-advantaged asset growth and generational legacy planning strategies.',
-        'Maintains rigorous compliance and client relationship fidelity across diverse demographic portfolios.'
+        'Specialized in life insurance solutions, focusing on Universal Index Life (IUL) and Term insurance.',
+        'Guided clients in securing essential financial protection, structuring tailored options for income replacement, debt coverage, and generational legacy planning.',
+        'Conducted individualized needs assessments to provide enduring peace of mind and financial security for families.',
+        'Advised policyholders on living benefits, cash-value growth potential, and tax-efficient wealth preservation.'
       ],
-      technologies: ['Financial Modeling', 'Risk Assessment', 'Client Consultation', 'Policy Structuring', 'Living Benefits']
+      technologies: [
+        'Universal Index Life (IUL)',
+        'Term Life Insurance',
+        'Income Replacement',
+        'Debt Coverage',
+        'Legacy Planning',
+        'Client Needs Analysis'
+      ]
     },
     {
       id: 'transamerica',
@@ -97,11 +70,16 @@ export const initialPortfolioData: PortfolioDataset = {
       isCurrent: false,
       department: 'Client Advisory Group',
       achievements: [
-        'Assists clients in navigating comprehensive financial protection options tailored to income replacement and debt insulation.',
-        'Conducts in-depth risk analysis consultations to safeguard family assets and ensure enduring peace of mind.',
-        'Collaborates with senior financial teams to structure legacy transfer frameworks and tax-efficient strategies.'
+        'Assisted clients with life insurance protection options, focusing on Universal Index Life and Term insurance coverage.',
+        'Evaluated income replacement and debt insulation priorities to protect family assets from unforeseen life events.',
+        'Provided comprehensive policy reviews to ensure protection remained aligned with evolving family goals.'
       ],
-      technologies: ['Asset Protection', 'Legacy Planning', 'Client Portfolios', 'Financial Analysis']
+      technologies: [
+        'Universal Index Life',
+        'Term Insurance',
+        'Family Financial Protection',
+        'Policy Structuring'
+      ]
     },
     {
       id: 'achieve-beyond',
@@ -109,14 +87,13 @@ export const initialPortfolioData: PortfolioDataset = {
       role: 'NYS Early Intervention Billing & Staffing Evaluation Specialist',
       location: 'Forest Hills, NY',
       period: 'March 2025 — June 2026',
-      department: 'Operations & Pediatric Healthcare Management',
+      department: 'Operations & Healthcare Reconciliation',
       achievements: [
-        'Synchronized and audited patient treatment records in Excel directly against the official NYS Early Intervention (EI) Hub, removing discrepancies and expediting reimbursement reporting.',
-        'Partnered with human resources to screen and vet clinician candidates for urgent early intervention and autism therapy cases, reducing clinician onboarding turnaround time.',
-        'Directed clinical supply procurement and inventory tracking schedules, eliminating material shortages for active pediatric therapists.',
-        'Contributed to the CUNY Spring Forward initiative, driving interdepartmental synergy across clinical, operational, and billing teams.'
+        'Audited and synchronized patient clinical treatment records in Excel against the official NYS Early Intervention (EI) Hub database, eliminating reporting discrepancies.',
+        'Collaborated with HR to vet clinician candidates for pediatric speech, physical, and occupational therapy assignments.',
+        'Managed clinical inventory schedules and therapy material distribution to prevent operational disruptions.'
       ],
-      technologies: ['NYS EI Hub', 'Advanced Excel', 'Data Auditing', 'Staffing Operations', 'Healthcare Compliance', 'Billing Pipelines']
+      technologies: ['NYS EI Hub', 'Advanced Excel', 'Data Auditing', 'Staffing Evaluation', 'Healthcare Compliance']
     },
     {
       id: 'laguardia-ida',
@@ -126,13 +103,11 @@ export const initialPortfolioData: PortfolioDataset = {
       period: 'February 2024 — December 2024',
       department: 'Center for Teaching and Learning (CTL)',
       achievements: [
-        'Delivered hands-on multimedia and web development support to faculty and students across academic departments.',
-        'Trained, supervised, and mentored cohorts of Student Technology Mentors (STMs) in educational software troubleshooting.',
-        'Assisted Capstone classes, faculty committees, and student cohorts with ePortfolio architecture, accessibility, and artifact curation.',
-        'Facilitated professional development workshops and conferences spotlighting innovative educational technologies.',
-        'Supervised operations within the ePortfolio Studio Lab, ensuring reliable technology access and technical support.'
+        'Supported faculty and students across academic departments with digital learning technologies and instructional software.',
+        'Supervised and mentored cohorts of Student Technology Mentors (STMs) in learning management systems troubleshooting.',
+        'Guided Capstone students with digital ePortfolio architecture, accessibility compliance, and artifact curation.'
       ],
-      technologies: ['Instructional Design', 'ePortfolios', 'Brightspace', 'Microsoft 365', 'Blackboard', 'Web Development']
+      technologies: ['Instructional Technology', 'ePortfolios', 'D2L Brightspace', 'Microsoft 365', 'Blackboard']
     },
     {
       id: 'laguardia-stm',
@@ -142,23 +117,10 @@ export const initialPortfolioData: PortfolioDataset = {
       period: 'September 2023 — February 2024',
       department: 'Educational Technology & Student Services',
       achievements: [
-        'Conducted interactive peer workshops and technical tutorials demystifying digital campus tools, coding basics, and ePortfolios.',
-        'Provided rapid diagnostic troubleshooting for hardware, software, and learning management systems (Blackboard, CUNYfirst).',
-        'Fostered an inclusive community of technology learners, delivering academic guidance and career exploration insights.'
+        'Conducted peer workshops and technical tutorials on campus digital tools, learning portals, and ePortfolios.',
+        'Delivered diagnostic technical assistance for Blackboard and CUNYfirst enterprise platforms.'
       ],
-      technologies: ['CUNYfirst', 'Blackboard', 'Student Mentoring', 'Technical Troubleshooting', 'Peer Training']
-    },
-    {
-      id: 'amazon-logistics',
-      company: 'Amazon Logistics',
-      role: 'Associate',
-      location: 'Greater New York City Area',
-      period: 'October 2019 — January 2020',
-      achievements: [
-        'Executed high-precision logistics package sorting and inbound distribution in a fast-paced fulfillment facility.',
-        'Maintained strict adherence to safety protocols and quality metrics within time-critical delivery windows.'
-      ],
-      technologies: ['Supply Chain Logistics', 'Process Execution', 'Operational Safety']
+      technologies: ['CUNYfirst', 'Blackboard', 'Peer Mentoring', 'Technical Troubleshooting']
     },
     {
       id: 'makalu-aerostar',
@@ -167,10 +129,10 @@ export const initialPortfolioData: PortfolioDataset = {
       location: 'Nepal & Miami, FL',
       period: 'January 2015 — February 2016',
       achievements: [
-        'Operated commercial multi-crew aircraft as First Officer (Co-Pilot), executing instrument flight rules, pre-flight safety manifests, and situational navigation.',
-        'Completed the rigorous Airline Transport Pilot Certification Training Program (ATP-CTP) at AeroStar Miami, mastering complex jet aerodynamics, automation management, and weather radar evaluation.'
+        'Operated commercial aircraft as First Officer (Co-Pilot), managing cockpit checklist verification and situational safety protocols.',
+        'Completed the Airline Transport Pilot Certification Training Program (ATP-CTP) at AeroStar Miami, focusing on turbine systems and high-altitude flight operations.'
       ],
-      technologies: ['Cockpit Crew Resource Management (CRM)', 'Aviation Systems', 'Systems Checklist Protocols', 'Risk Mitigation']
+      technologies: ['Cockpit Resource Management', 'Aviation Systems', 'Checklist Protocols', 'Risk Mitigation']
     }
   ],
   education: [
@@ -178,58 +140,50 @@ export const initialPortfolioData: PortfolioDataset = {
       id: 'cuny-sps-ms',
       institution: 'CUNY School of Professional Studies',
       degree: 'Master of Science',
-      major: 'Generative Artificial Intelligence (Applied AI for Business)',
-      period: 'January 2026 — May 2028',
-      honors: 'Current Graduate Scholar',
+      major: 'Generative Artificial Intelligence',
+      period: 'January 2026 — Present',
+      honors: 'Graduate Degree Candidate',
+      programOverview:
+        'One of the first graduate programs in the U.S. dedicated exclusively to generative artificial intelligence, launched in Spring 2026. Designed for decision-makers seeking to understand the modern AI solution ecosystem, solve real-world problems, and automate organizational processes with high governance standards.',
+      coursework: [
+        'Machine Learning',
+        'Introduction to Generative AI',
+        'Natural Language Processing & Understanding',
+        'Vector Databases',
+        'Large Language & Mixture of Expert (MoE) Models',
+        'Prompt Engineering & LangChain',
+        'Advanced State-Based Models & Prompt Programming',
+        'Fine-Tuning & Retrieval-Augmented Generation (RAG)',
+        'Intelligent Agents, Responsible & Explainable AI',
+        'Capstone Project'
+      ],
       highlights: [
-        'Focus on enterprise AI deployment, prompt orchestration, retrieval-augmented generation (RAG), and agentic workflows.',
-        'Researching applied AI solutions for business process automation, operational anomaly detection, and decision support.',
-        'Evaluating ethical AI frameworks, data governance, and scalable model integration.'
+        'Focus on systems-level AI management, vector database retrieval, and workflow orchestration',
+        'Study of responsible AI governance, prompt programming, and agentic workflows'
       ]
     },
     {
       id: 'cuny-sps-bs',
       institution: 'CUNY School of Professional Studies',
       degree: 'Bachelor of Science',
-      major: 'Management Information Systems and Services',
+      major: 'Information Systems',
       period: 'January 2025 — February 2026',
       honors: "Dean's List (June 2025)",
       highlights: [
-        'Core coursework: Database Management Systems, Enterprise Systems Architecture, Systems Analysis & Design.',
-        'Deep study into enterprise workflow automation, IT governance, and information security.'
-      ]
-    },
-    {
-      id: 'zicklin-baruch',
-      institution: 'Zicklin School of Business (Baruch College, CUNY)',
-      degree: 'Bachelor of Computer Information Systems',
-      major: 'Data Analytics',
-      period: 'August 2024 — December 2024',
-      highlights: [
-        'Specialized quantitative training in business analytics, statistical modeling, data warehousing, and SQL querying.',
-        'Conducted data modeling projects exploring business performance metrics and decision trees.'
+        'Study of Enterprise Systems Architecture, Database Management, and Systems Analysis & Design',
+        'IT governance, information security fundamentals, and business systems design'
       ]
     },
     {
       id: 'laguardia-as',
       institution: 'LaGuardia Community College (CUNY)',
       degree: 'Associate of Science with Honors',
-      major: 'Business Administration and Management',
+      major: 'Business Administration',
       period: 'September 2021 — August 2024',
-      honors: "Dean's List (Sep 2023, Mar 2024, Aug 2024) · Graduated with Honors",
+      honors: "Dean's List (3 Semesters) · Graduated with Honors",
       highlights: [
-        'Rigorous foundation in economics, calculus, probability & statistics, and organizational behavior.',
-        'Active campus leader in student technology mentoring and instructional technology labs.'
-      ]
-    },
-    {
-      id: 'aerostar-cert',
-      institution: 'AeroStar Training Services LLC',
-      degree: 'Certificate of Completion',
-      major: 'Aeronautics / Aviation Science & Technology (ATP-CTP)',
-      period: '2016',
-      highlights: [
-        'Comprehensive ground and full-flight simulator training in turbine aircraft operations, weather radar, and high-altitude aerodynamics.'
+        'Core quantitative grounding in statistics, economics, and business organization',
+        'Instructional technology leadership and peer student mentorship'
       ]
     }
   ],
@@ -238,28 +192,28 @@ export const initialPortfolioData: PortfolioDataset = {
       id: 'h1',
       title: "Dean's List Award",
       institution: 'CUNY School of Professional Studies',
-      date: 'June 5, 2025',
+      date: 'June 2025',
       note: 'Recognized for sustained academic excellence in Information Systems'
     },
     {
       id: 'h2',
       title: "Dean's List Award",
       institution: 'CUNY LaGuardia Community College',
-      date: 'August 14, 2024',
-      note: 'Top academic decile in Business Administration'
+      date: 'August 2024',
+      note: 'Top academic distinction in Business Administration'
     },
     {
       id: 'h3',
       title: "Dean's List Award",
       institution: 'CUNY LaGuardia Community College',
-      date: 'March 14, 2024',
+      date: 'March 2024',
       note: 'Distinction in Business and Quantitative Analytics'
     },
     {
       id: 'h4',
       title: "Dean's List Award",
       institution: 'CUNY LaGuardia Community College',
-      date: 'September 28, 2023',
+      date: 'September 2023',
       note: 'Academic honors recognition'
     }
   ],
@@ -271,6 +225,14 @@ export const initialPortfolioData: PortfolioDataset = {
       date: 'Certified',
       category: 'Process Optimization',
       credentialId: 'SSGB-VERIFIED'
+    },
+    {
+      id: 'css-cert',
+      name: 'CSS (Cascading Style Sheets) Certification',
+      issuer: 'Web Development / CSS Training',
+      date: 'Certified',
+      category: 'Web Styling & Design',
+      credentialId: 'CSS-CERT-VERIFIED'
     },
     {
       id: 'google-ai-prof',
@@ -295,192 +257,158 @@ export const initialPortfolioData: PortfolioDataset = {
       date: 'Certified',
       category: 'Information Technology',
       credentialId: 'GOOG-IT-SUPPORT'
-    },
-    {
-      id: 'brightspace-started',
-      name: 'Getting Started in Brightspace',
-      issuer: 'D2L Brightspace',
-      date: 'Certified',
-      category: 'EdTech'
-    },
-    {
-      id: 'brightspace-basics',
-      name: 'Brightspace Basics Completion Certificate',
-      issuer: 'D2L Brightspace',
-      date: 'Certified',
-      category: 'EdTech'
-    },
-    {
-      id: 'overcome-overthinking',
-      name: 'Overcome Overthinking & Decisive Action',
-      issuer: 'Professional Development',
-      date: 'Completed',
-      category: 'Professional Leadership'
-    },
-    {
-      id: 'atp-ctp',
-      name: 'Airline Transport Pilot Certification (ATP-CTP)',
-      issuer: 'AeroStar Training Services / FAA Framework',
-      date: 'Completed (Frozen)',
-      category: 'Aviation Systems'
     }
   ],
   projects: [
     {
-      id: 'ei-hub-pipeline',
-      title: 'Healthcare EI Billing & Data Reconciliation Engine',
-      category: 'Data & Automation',
-      featured: true,
-      shortDescription: 'Automated data audit pipeline syncing pediatric clinic records with the official NYS Early Intervention (EI) Hub.',
-      fullDescription:
-        'Engineered an automated data verification script and structured Excel/SQL reconciliation system designed to audit complex pediatric early-intervention treatment sessions against official state EI Hub databases. Solved systematic billing discrepancies and expedited provider reimbursement cycles.',
-      problemSolved:
-        'Manual checks between clinic spreadsheets and state portals created critical data lags, delayed therapist compensation, and caused billing rejections. This solution implemented automated cross-referencing and anomaly detection.',
-      techStack: ['Python', 'Pandas', 'SQL', 'Excel Macros', 'NYS EI Hub API/Schemas', 'Data Validation'],
-      githubUrl: 'https://github.com/Cmjha44/ei-billing-reconciliation',
-      impactMetrics: [
-        '100% elimination of manual cross-referencing errors',
-        '65% reduction in billing cycle turnarounds',
-        'Zero patient session record discrepancies'
-      ],
-      highlights: [
-        'Automated schema alignment between heterogeneous patient intake tables and state compliance formats',
-        'Automated warning flags for missing therapist signatures or unapproved authorizations',
-        'Executive reconciliation dashboard showing billing clearance velocity'
-      ]
-    },
-    {
       id: 'genai-rag-assistant',
-      title: 'Enterprise Knowledge & Policy RAG Assistant',
+      title: 'Vector Search & Policy Retrieval Study',
       category: 'Applied AI & RAG',
-      featured: true,
-      shortDescription: 'Retrieval-augmented conversational agent querying complex organizational policy and compliance guidelines.',
+      featured: false,
+      shortDescription: 'Exploration of vector databases, semantic embeddings, and prompt orchestration for querying organizational policy documents.',
       fullDescription:
-        'A full-stack AI knowledge assistant utilizing modern vector embeddings and semantic search to allow enterprise employees to query thousands of pages of internal policy manuals, compliance regulations, and operational handbooks in real time with grounded citations.',
+        'Graduate coursework study examining semantic retrieval architectures, vector indexing, and structured prompt engineering to locate grounded compliance citations.',
       problemSolved:
-        'Navigating fragmented PDF documentation and static policy portals wasted hundreds of employee hours each quarter. This system delivers instant, cited answers with strict hallucination safeguards.',
-      techStack: ['Generative AI', 'Vector DB', 'TypeScript', 'React', 'Tailwind CSS', 'FastAPI', 'LangChain'],
+        'Investigates how modern vector databases and prompt engineering can replace static document searches with citation-backed semantic retrieval.',
+      techStack: ['Vector Databases', 'Prompt Engineering', 'LangChain Concepts', 'Python Basics', 'CSS'],
       githubUrl: 'https://github.com/Cmjha44/genai-policy-rag',
       impactMetrics: [
-        'Under 400ms semantic search response latency',
-        '95%+ factual grounding accuracy with chunk attribution',
-        'Multi-tenant support with role-based access'
+        'Evaluation of dense embedding retrieval against test compliance manuals',
+        'Grounded response generation with prompt templates',
+        'Clean responsive user interface styled with custom CSS'
       ],
       highlights: [
-        'Recursive chunking with hybrid keyword + dense vector search',
-        'Evaluation pipeline checking citation accuracy against source documents',
-        'Clean responsive user interface with streaming text responses'
+        'Explores semantic chunk retrieval against test documents',
+        'Structured prompt persona engineering for factual compliance answers',
+        'Responsible AI safety boundaries'
       ]
     },
     {
-      id: 'cuny-edtech-hub',
-      title: 'Higher-Ed ePortfolio & Instructional Mentor Portal',
-      category: 'Web & EdTech',
-      featured: true,
-      shortDescription: 'Centralized resource hub and interactive showcase facilitating student technology mentoring and digital portfolios.',
+      id: 'ei-hub-pipeline',
+      title: 'Healthcare EI Billing Data Reconciliation',
+      category: 'Data & Automation',
+      featured: false,
+      shortDescription: 'Structured data auditing procedure cross-referencing clinic session records against official NYS Early Intervention (EI) Hub guidelines.',
       fullDescription:
-        'Developed an accessible digital learning portal used by student cohorts and instructional staff at LaGuardia CC. Aggregates step-by-step guides for Brightspace, Blackboard, and ePortfolio creation alongside interactive workshop schedules and peer booking.',
+        'Standardized Excel verification workflow developed to audit clinical session logs against state compliance schemas, resolving billing delays and ensuring reimbursement accuracy.',
       problemSolved:
-        'First-year and capstone students frequently struggled to navigate dispersed university IT systems. This portal provided a clean, unified on-ramp that reduced repetitive helpdesk inquiries.',
-      techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Accessible HTML5', 'Brightspace APIs', 'ePortfolio CMS'],
-      githubUrl: 'https://github.com/Cmjha44/cuny-edtech-mentor-portal',
+        'Manual comparisons between clinic logs and state portals created discrepancies. This project standardized verification sheets to streamline reimbursement reporting.',
+      techStack: ['NYS EI Hub Guidelines', 'Advanced Excel', 'Data Auditing', 'Process Mapping'],
+      githubUrl: 'https://github.com/Cmjha44/ei-billing-reconciliation',
       impactMetrics: [
-        'Adopted across 12+ Capstone studio classes',
-        '500+ student tutorials and consultation sessions supported',
-        'WCAG 2.1 AA accessibility compliant'
+        '100% discrepancy elimination in audited patient records',
+        'Accelerated review turnaround for active clinical therapy cases',
+        'Standardized intake checklist procedures'
       ],
       highlights: [
-        'Modular tutorial library with step-by-step interactive checklists',
-        'Integrated ePortfolio artifact templates tailored for undergraduate capstones',
-        'Direct connection to peer student technology mentors'
+        'Alignment between treatment logs and state compliance tables',
+        'Systematic validation of therapist session signatures and authorizations',
+        'Clear discrepancy audit tracking'
       ]
     },
     {
       id: 'policylife-financial',
-      title: 'PolicyLife: Dynamic Risk & Living Benefits Simulator',
+      title: 'Universal Index Life (IUL) Illustration Model',
       category: 'Financial Systems',
       featured: false,
-      shortDescription: 'Interactive financial modeling tool projecting life insurance cash value, policy loans, and critical illness benefits.',
+      shortDescription: 'Client financial planning model illustrating Universal Index Life (IUL) vs. Term insurance protection and legacy planning.',
       fullDescription:
-        'A client-facing financial planning calculator built to demystify complex life insurance products. Allows clients to simulate premium allocations, compound cash-value accumulation, tax-advantaged living benefit payouts, and generational transfer scenarios.',
+        'Interactive financial illustration framework designed to clearly explain life insurance policy options to clients, contrasting term coverage against permanent Universal Index Life (IUL) for income replacement and debt coverage.',
       problemSolved:
-        'Traditional life insurance policy illustrations are dense, opaque, and intimidating for families. This interactive tool visualizes financial outcomes dynamically based on personalized client parameters.',
-      techStack: ['TypeScript', 'React', 'Recharts', 'Tailwind CSS', 'Actuarial Calculation Engines'],
+        'Demystifies life insurance structures, illustrating how Universal Index Life and Term insurance provide tailored protection for family peace of mind.',
+      techStack: ['Universal Index Life (IUL)', 'Term Insurance Analysis', 'Financial Modeling', 'CSS', 'HTML'],
       githubUrl: 'https://github.com/Cmjha44/policylife-simulator',
       impactMetrics: [
-        'Real-time multi-scenario cash flow modeling',
-        'Visualized 30-year projections in <50ms',
-        'Interactive comparison of term vs. permanent index policies'
+        'Clear comparison between Term and Universal Index Life (IUL)',
+        'Visualizes income replacement, debt coverage, and legacy planning scenarios',
+        'Structured consultation checklist for client financial reviews'
       ],
       highlights: [
-        'Dynamic compound interest and index-crediting projection algorithms',
-        'Living benefits trigger simulator (chronic illness, critical care, policy loans)',
-        'One-click PDF summary generator for client consultations'
+        'Clear modeling of policy options for debt coverage and family peace of mind',
+        'Demonstrates living benefits and cash-value growth scenarios',
+        'Client-friendly presentation format styled with clean CSS'
+      ]
+    },
+    {
+      id: 'cuny-edtech-hub',
+      title: 'Higher-Ed ePortfolio & Digital Guide Showcase',
+      category: 'Web & EdTech',
+      featured: false,
+      shortDescription: 'Centralized resource guide and presentation site supporting student technology mentoring and digital portfolios.',
+      fullDescription:
+        'Developed to support student cohorts and faculty at LaGuardia CC, aggregating step-by-step guides for Brightspace, Blackboard, and digital ePortfolios.',
+      problemSolved:
+        'Provided undergraduate and capstone students with accessible, centralized instructions for building academic portfolios and navigating learning management systems.',
+      techStack: ['CSS (Certified)', 'HTML5', 'D2L Brightspace', 'Blackboard', 'ePortfolio Curation'],
+      githubUrl: 'https://github.com/Cmjha44/cuny-edtech-mentor-portal',
+      impactMetrics: [
+        'Supported 12+ Capstone studio sections and workshops',
+        'Assisted 500+ students and faculty across digital learning labs',
+        'Accessible, clean web layout styled with certified CSS'
+      ],
+      highlights: [
+        'Step-by-step digital artifact curation instructions',
+        'Accessible, responsive layout crafted with certified CSS techniques',
+        'Peer technology mentoring guide'
       ]
     }
   ],
   skills: [
     {
-      categoryName: 'Generative AI & Machine Learning',
-      summary: 'Applied LLM architectures, workflow automation, and prompt systems',
+      categoryName: 'Core Technical Competencies',
+      summary: 'Systems-level AI orchestration, data retrieval, and governance',
       skills: [
-        { name: 'Introduction to Generative AI', highlighted: true },
-        { name: 'Machine Learning Fundamentals', highlighted: true },
-        { name: 'RAG Architectures & Vector Search', highlighted: true },
-        { name: 'Prompt Engineering & System Personas' },
-        { name: 'AI Workflow Automation (n8n, Make)' },
-        { name: 'Agentic Workflows & Multi-Step Logic' },
-        { name: 'Error Detection & Automated Resolution', highlighted: true }
+        { name: 'Python programming', highlighted: true },
+        { name: 'Google AI Studio orchestration', highlighted: true },
+        { name: 'DevSecOps governance', highlighted: true },
+        { name: 'Vector databases', highlighted: true }
       ]
     },
     {
-      categoryName: 'Operations, Quality & Six Sigma',
-      summary: 'Process mapping, discrepancy reduction, and lean operational design',
+      categoryName: 'Generative AI & ML (Graduate Coursework)',
+      summary: 'Applied curriculum at CUNY SPS (no course codes or credit mentions)',
       skills: [
-        { name: 'Six Sigma Green Belt Methodology', highlighted: true },
+        { name: 'Machine Learning', highlighted: true },
+        { name: 'Introduction to Generative AI', highlighted: true },
+        { name: 'Natural Language Processing & Understanding', highlighted: true },
+        { name: 'Large Language & Mixture of Expert (MoE) Models' },
+        { name: 'Prompt Engineering & LangChain', highlighted: true },
+        { name: 'Advanced State-Based Models & Prompt Programming' },
+        { name: 'Fine-Tuning & Retrieval-Augmented Generation (RAG)', highlighted: true },
+        { name: 'Intelligent Agents, Responsible & Explainable AI' }
+      ]
+    },
+    {
+      categoryName: 'Life Insurance & Financial Advisory',
+      summary: 'Licensed life insurance advisory, client protection, and legacy planning',
+      skills: [
+        { name: 'Universal Index Life (IUL) Insurance', highlighted: true },
+        { name: 'Term Life Insurance', highlighted: true },
+        { name: 'Income Replacement Planning', highlighted: true },
+        { name: 'Debt Coverage Strategy', highlighted: true },
+        { name: 'Legacy Planning & Family Protection', highlighted: true },
+        { name: 'Living Benefits & Critical Illness Protections' }
+      ]
+    },
+    {
+      categoryName: 'Process Quality & Operations',
+      summary: 'Lean Six Sigma methodology, defect reduction, and operational compliance',
+      skills: [
+        { name: 'Six Sigma Green Belt (DMAIC)', highlighted: true },
         { name: 'Process Flow & Bottleneck Mapping', highlighted: true },
-        { name: 'Discrepancy Elimination & Root Cause Analysis' },
-        { name: 'Operational Audit & Compliance Support' },
-        { name: 'Pediatric Healthcare Staffing & Logistics' },
+        { name: 'Discrepancy Auditing & Root Cause Analysis' },
         { name: 'Checklist Architecture & Aviation Safety Protocols' }
       ]
     },
     {
-      categoryName: 'Enterprise Data & Systems',
-      summary: 'Enterprise platforms, structured databases, and reconciliation pipelines',
+      categoryName: 'Web Styling & Platforms',
+      summary: 'Certified CSS styling, enterprise portals, and LMS administration',
       skills: [
-        { name: 'NYS Early Intervention (EI) Hub', highlighted: true },
-        { name: 'CUNYfirst Enterprise Portal' },
-        { name: 'D2L Brightspace LMS' },
-        { name: 'Blackboard Academic Suite' },
-        { name: 'Microsoft 365 Enterprise Admin' },
-        { name: 'Database Synchronization & Querying (SQL)', highlighted: true },
-        { name: 'Advanced Excel & Data Modeling', highlighted: true }
-      ]
-    },
-    {
-      categoryName: 'Web & Programming Languages',
-      summary: 'Modern software tools, frontend design, and scripting',
-      skills: [
-        { name: 'Python (Data Analysis & Scripting)', highlighted: true },
-        { name: 'JavaScript & TypeScript' },
-        { name: 'React SPA Development' },
-        { name: 'Tailwind CSS' },
-        { name: 'HTML5 & Semantic Accessibility' },
-        { name: 'Git & GitHub Version Control' },
-        { name: 'REST APIs & Webhooks' }
-      ]
-    },
-    {
-      categoryName: 'Advisory & Professional Leadership',
-      summary: 'Client consultation, academic mentorship, and strategic planning',
-      skills: [
-        { name: 'Financial Needs Analysis & Advisory', highlighted: true },
-        { name: 'Life Insurance & Living Benefits Structuring' },
-        { name: 'Student Technology Mentorship' },
-        { name: 'Instructional Design & Workshop Facilitation' },
-        { name: 'Interdisciplinary Communication' },
-        { name: 'Commercial Aviation Multi-Crew Coordination' }
+        { name: 'CSS (Cascading Style Sheets) — Certified', highlighted: true },
+        { name: 'HTML & Semantic Web Layouts' },
+        { name: 'NYS Early Intervention (EI) Hub Administration', highlighted: true },
+        { name: 'D2L Brightspace LMS & CUNYfirst' },
+        { name: 'Microsoft 365 & Advanced Excel' }
       ]
     }
   ]

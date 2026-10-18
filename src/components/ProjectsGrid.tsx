@@ -84,7 +84,6 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
 
   const categories = [
     'All',
-    'Live GitHub Repos',
     'Applied AI & RAG',
     'Data & Automation',
     'Web & EdTech',
@@ -95,15 +94,8 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
   const filteredProjects = useMemo(() => {
     let list: ProjectItem[] = [];
 
-    if (activeCategory === 'Live GitHub Repos') {
-      list = dynamicGhProjects;
-    } else if (activeCategory === 'All') {
-      // Merge unique projects, avoiding duplicate titles
-      const existingTitles = new Set(projects.map((p) => p.title.toLowerCase()));
-      const uniqueGh = dynamicGhProjects.filter(
-        (gp) => !existingTitles.has(gp.title.toLowerCase())
-      );
-      list = [...projects, ...uniqueGh];
+    if (activeCategory === 'All') {
+      list = projects;
     } else {
       list = projects.filter((p) => p.category === activeCategory);
     }
@@ -120,19 +112,19 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
   }, [activeCategory, projects, dynamicGhProjects, searchQuery]);
 
   return (
-    <section id="projects" className="py-20 border-t border-slate-200/80 dark:border-slate-800/80 scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 border-t border-stone-200/80 dark:border-stone-800/80 scroll-mt-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold tracking-wider uppercase text-indigo-600 dark:text-indigo-400">
-              Open Source &amp; Systems Engineering
+            <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
+              Projects &amp; Code
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-2 mb-3">
+            <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-3">
               Projects &amp; GitHub Repositories
             </h2>
-            <p className="text-base text-slate-600 dark:text-slate-300">
-              Live automated GitHub synchronization displaying public repositories, contribution activity graphs, and applied enterprise architectures.
+            <p className="text-base text-stone-600 dark:text-stone-300">
+              Live automated GitHub synchronization displaying public repositories, contribution activity, and coursework explorations.
             </p>
           </div>
 
@@ -243,35 +235,8 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
           </div>
         </div>
 
-        {/* If user filtered strictly to Live GitHub Repos and we have real repo objects */}
-        {activeCategory === 'Live GitHub Repos' ? (
-          <div>
-            {isLoadingGh ? (
-              <div className="p-12 text-center text-sm text-slate-500 flex flex-col items-center gap-3">
-                <RefreshCw className="w-6 h-6 animate-spin text-indigo-500" />
-                <span>Fetching live repositories from GitHub API...</span>
-              </div>
-            ) : ghRepos.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {ghRepos.map((repo) => (
-                  <GitHubRepoCard key={repo.id} repo={repo} />
-                ))}
-              </div>
-            ) : (
-              <div className="p-10 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-center space-y-2">
-                <FolderGit2 className="w-8 h-8 text-slate-400 mx-auto" />
-                <h4 className="text-base font-bold text-slate-900 dark:text-white">
-                  No public repositories found for @{githubUsername}
-                </h4>
-                <p className="text-xs text-slate-500 max-w-md mx-auto">
-                  New public repositories created on GitHub will appear here automatically upon sync.
-                </p>
-              </div>
-            )}
-          </div>
-        ) : (
-          /* General Projects Grid */
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+        {/* General Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             {filteredProjects.length === 0 ? (
               <div className="col-span-2 p-12 text-center rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
                 <p className="text-sm text-slate-500">
@@ -291,17 +256,12 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
                         <Layers className="w-3.5 h-3.5" />
                         <span>{project.category}</span>
                       </div>
-                      {project.id.startsWith('gh-repo-') ? (
+                      {project.id.startsWith('gh-repo-') && (
                         <span className="flex items-center gap-1 text-slate-500 font-mono text-[11px]">
                           <Github className="w-3 h-3" />
                           <span>GitHub Live</span>
                         </span>
-                      ) : project.featured ? (
-                        <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400 text-xs font-semibold">
-                          <Sparkles className="w-3 h-3" />
-                          <span>Featured Architecture</span>
-                        </span>
-                      ) : null}
+                      )}
                     </div>
 
                     {/* Title */}
@@ -374,7 +334,6 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
               ))
             )}
           </div>
-        )}
       </div>
     </section>
   );

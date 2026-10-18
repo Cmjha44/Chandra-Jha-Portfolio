@@ -36,7 +36,14 @@ export interface EducationItem {
   major: string;
   period: string;
   honors?: string;
+  programOverview?: string;
   highlights?: string[];
+  courses?: {
+    code: string;
+    title: string;
+    credits: number;
+  }[];
+  coursework?: string[];
 }
 
 export interface ProjectItem {

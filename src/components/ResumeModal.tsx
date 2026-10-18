@@ -142,6 +142,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
                       {edu.honors}
                     </div>
                   )}
+                  {edu.coursework && (
+                    <div className="text-[11px] text-slate-600 dark:text-slate-400 print:text-slate-700 mt-1.5">
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">Coursework: </span>
+                      <span>{edu.coursework.join(' · ')}</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

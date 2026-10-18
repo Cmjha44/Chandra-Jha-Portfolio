@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Award, CheckCircle, Calendar } from 'lucide-react';
+import { Calendar, Award, Check } from 'lucide-react';
 import { EducationItem, CertificationItem, HonorItem } from '../types/portfolio';
 
 interface EducationSectionProps {
@@ -14,137 +14,111 @@ export const EducationSection: React.FC<EducationSectionProps> = ({
   honors
 }) => {
   return (
-    <section id="education" className="py-20 border-t border-slate-200/80 dark:border-slate-800/80 scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="education" className="py-20 border-t border-stone-200/80 dark:border-stone-800/80 scroll-mt-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-14">
-          <span className="text-xs font-semibold tracking-wider uppercase text-indigo-600 dark:text-indigo-400">
-            Academic Credentials &amp; Honors
+        <div className="max-w-3xl mb-12">
+          <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
+            Academic Background
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-2 mb-4">
-            Education &amp; Professional Certifications
+          <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-4">
+            Education &amp; Academic Credentials
           </h2>
-          <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            A comprehensive academic foundation spanning applied Generative AI, management information systems, business analytics, and aeronautics.
+          <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed">
+            Graduate study in Generative AI and undergraduate foundation in Information Systems at the City University of New York.
           </p>
         </div>
 
-        {/* Academic Degrees Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        {/* Clean Degrees List */}
+        <div className="space-y-6 mb-16">
           {education.map((edu) => (
             <div
               key={edu.id}
-              className="p-6 sm:p-7 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-2xs hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all flex flex-col justify-between"
+              className="p-6 sm:p-7 rounded-2xl bg-white dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800 shadow-2xs"
             >
-              <div>
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900/50 flex items-center justify-center shrink-0">
-                      <GraduationCap className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug">
-                        {edu.degree}
-                      </h3>
-                      <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">
-                        {edu.major}
-                      </div>
-                    </div>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
+                <div>
+                  <h3 className="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100">
+                    {edu.degree} in {edu.major}
+                  </h3>
+                  <div className="text-sm font-medium text-stone-600 dark:text-stone-400">
+                    {edu.institution}
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-4 font-mono tabular-nums">
+                <div className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 font-mono">
                   <Calendar className="w-3.5 h-3.5" />
                   <span>{edu.period}</span>
-                  <span aria-hidden="true">·</span>
-                  <span className="font-sans text-slate-700 dark:text-slate-300 font-medium">
-                    {edu.institution}
-                  </span>
                 </div>
-
-                {edu.honors && (
-                  <div className="mb-4 inline-flex items-center gap-1.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
-                    <Award className="w-3.5 h-3.5" />
-                    <span>{edu.honors}</span>
-                  </div>
-                )}
-
-                {edu.highlights && edu.highlights.length > 0 && (
-                  <ul className="space-y-2 mt-2">
-                    {edu.highlights.map((hl, hIdx) => (
-                      <li key={hIdx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                        <CheckCircle className="w-3.5 h-3.5 text-indigo-500 shrink-0 mt-0.5" />
-                        <span>{hl}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </div>
+
+              {edu.honors && (
+                <div className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400 mt-1 mb-3">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>{edu.honors}</span>
+                </div>
+              )}
+
+              {edu.programOverview && (
+                <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed mt-2 mb-4">
+                  {edu.programOverview}
+                </p>
+              )}
+
+              {/* Coursework Topics without GAI codes or credits */}
+              {edu.coursework && edu.coursework.length > 0 && (
+                <div className="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800">
+                  <span className="text-xs font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 block mb-2.5">
+                    Coursework &amp; Subject Areas:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {edu.coursework.map((topic) => (
+                      <span
+                        key={topic}
+                        className="px-2.5 py-1 text-xs rounded-md bg-stone-100 dark:bg-stone-800/80 text-stone-700 dark:text-stone-300 border border-stone-200/60 dark:border-stone-700/60"
+                      >
+                        {topic}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {edu.highlights && edu.highlights.length > 0 && (
+                <ul className="space-y-1.5 mt-4">
+                  {edu.highlights.map((hl, hIdx) => (
+                    <li key={hIdx} className="flex items-start gap-2 text-xs text-stone-600 dark:text-stone-300">
+                      <Check className="w-3.5 h-3.5 text-stone-400 shrink-0 mt-0.5" />
+                      <span>{hl}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
 
-        {/* Honors & Awards Bar */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-6">
-            <Award className="w-5 h-5 text-amber-500" />
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-              Academic Honors &amp; Dean&apos;s List Recognitions
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {honors.map((honor) => (
-              <div
-                key={honor.id}
-                className="p-5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-2xs"
-              >
-                <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">
-                  {honor.title}
-                </div>
-                <div className="text-sm font-bold text-slate-900 dark:text-white mb-2">
-                  {honor.institution}
-                </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 font-mono tabular-nums">
-                  Awarded: {honor.date}
-                </div>
-                {honor.note && (
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                    {honor.note}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Certifications Grid */}
+        {/* Certifications Strip */}
         <div>
-          <div className="flex items-center gap-2 mb-6">
-            <CheckCircle className="w-5 h-5 text-emerald-500" />
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-              Professional Certifications &amp; Licenses
-            </h3>
-          </div>
-
+          <h3 className="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100 mb-6">
+            Professional Certifications &amp; Licenses
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {certifications.map((cert) => (
               <div
                 key={cert.id}
-                className="p-5 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                className="p-5 rounded-xl bg-stone-50/80 dark:bg-stone-900/60 border border-stone-200/80 dark:border-stone-800 flex flex-col justify-between"
               >
-                <div className="flex items-start justify-between gap-2 mb-1">
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white leading-snug">
+                <div>
+                  <div className="text-xs font-mono text-stone-400 dark:text-stone-500 mb-1">
+                    {cert.category}
+                  </div>
+                  <h4 className="font-serif text-sm font-semibold text-stone-900 dark:text-stone-100 mb-1">
                     {cert.name}
                   </h4>
-                </div>
-                <div className="text-xs text-indigo-600 dark:text-indigo-400 font-medium mb-2">
-                  {cert.issuer}
-                </div>
-                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-                  <span>{cert.category}</span>
-                  <span aria-hidden="true">·</span>
-                  <span className="font-mono tabular-nums">{cert.date}</span>
+                  <p className="text-xs text-stone-500 dark:text-stone-400">
+                    {cert.issuer}
+                  </p>
                 </div>
               </div>
             ))}

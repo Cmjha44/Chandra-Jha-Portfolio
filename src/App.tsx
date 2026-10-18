@@ -30,7 +30,7 @@ export default function App() {
   // Portfolio dataset state with localStorage persistence
   const [dataset, setDataset] = useState<PortfolioDataset>(() => {
     try {
-      const saved = localStorage.getItem('chandra_portfolio_dataset_v7');
+      const saved = localStorage.getItem('chandra_portfolio_dataset_v12');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.profile && parsed.projects) {
@@ -78,6 +78,8 @@ export default function App() {
 
         <AboutSection profile={dataset.profile} />
 
+        <SkillsSection skills={dataset.skills} />
+
         <ExperienceTimeline experience={dataset.experience} />
 
         <EducationSection
@@ -91,12 +93,10 @@ export default function App() {
           onSelectProject={(proj) => setSelectedProject(proj)}
         />
 
-        <SkillsSection skills={dataset.skills} />
-
         <ContactSection profile={dataset.profile} />
       </main>
 
-      {/* Site Footer */}
+      {/* Minimalist Contact & Footer */}
       <Footer profile={dataset.profile} />
 
       {/* Interactive Resume / CV Lightbox Modal */}
