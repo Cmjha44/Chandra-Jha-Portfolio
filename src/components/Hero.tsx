@@ -2,6 +2,7 @@ import React from 'react';
 import { Mail, Linkedin, Github, FileText, ArrowRight } from 'lucide-react';
 import { ProfileData } from '../types/portfolio';
 import { SupportedLanguage, translations } from '../data/translations';
+import localPortrait from '../assets/images/1790747923791.jpg';
 
 interface HeroProps {
   profile: ProfileData;
@@ -88,14 +89,13 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume, currentLang }
           <div className="md:col-span-4 flex justify-center md:justify-end">
             <div className="relative w-48 sm:w-56 md:w-full max-w-[260px] aspect-square rounded-2xl overflow-hidden border border-stone-200/80 dark:border-stone-800 shadow-xs bg-stone-100 dark:bg-stone-900">
               <img
-                src={profile.avatarUrl}
+                src={localPortrait || profile.avatarUrl}
                 alt={`${profile.name} — Professional Portrait`}
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
                   const target = e.currentTarget;
-                  if (target.src !== window.location.origin + '/src/assets/images/chandra_jha_portrait_1792048475063.jpg' && !target.src.includes('chandra_jha_portrait')) {
-                    target.src = '/src/assets/images/chandra_jha_portrait_1792048475063.jpg';
+                  if (target.src !== localPortrait) {
+                    target.src = localPortrait;
                   } else {
                     target.style.display = 'none';
                     if (target.nextElementSibling) {
