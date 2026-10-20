@@ -101,7 +101,7 @@ export const translations: Record<SupportedLanguage, Translations> = {
         'I specialize in systems-level AI management and workflow orchestration, translating advanced Generative AI capabilities into reliable, human-centered organizational processes. Alongside my technical and administrative background in early childhood healthcare data audits and life insurance protection, I draw balance and perspective from hiking mountain trails, exploring quiet natural landscapes, and thoughtful, unhurried adventures.',
       getInTouch: 'Get in Touch',
       viewResume: 'View Resume',
-      downloadZip: 'Download Dist (ZIP)',
+      downloadZip: 'Download Source (ZIP)',
       downloadReadme: 'Download README'
     },
     about: {
@@ -183,7 +183,7 @@ export const translations: Record<SupportedLanguage, Translations> = {
         'म प्रणाली-स्तरको एआई व्यवस्थापन तथा कार्यप्रवाह संयोजनमा विशेषज्ञता राख्दछु, जसले आधुनिक जेनेरेटिभ एआई क्षमताहरूलाई भरपर्दो र व्यावहारिक संगठनात्मक प्रक्रियाहरूमा रूपान्तरण गर्दछ। बाल स्वास्थ्य सेवा डाटा अडिट तथा जीवन बीमा सुरक्षालगायतका मेरो प्रशासनिक र प्राविधिक अनुभवका साथै, म पदयात्रा, शान्त प्राकृतिक परिदृश्य र प्रकृतिको सामीप्यताबाट नयाँ ऊर्जा र दृष्टिकोण प्राप्त गर्दछु।',
       getInTouch: 'सम्पर्क गर्नुहोस्',
       viewResume: 'बायोडाटा हेर्नुहोस्',
-      downloadZip: 'डाउनलोड Dist (ZIP)',
+      downloadZip: 'डाउनलोड Source (ZIP)',
       downloadReadme: 'डाउनलोड README'
     },
     about: {

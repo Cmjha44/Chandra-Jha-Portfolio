@@ -27,13 +27,13 @@ export const Footer: React.FC<FooterProps> = ({ profile }) => {
 
           <div className="flex flex-wrap items-center gap-4">
             <a
-              href="/chandra-jha-portfolio-dist.zip"
-              download="chandra-jha-portfolio-dist.zip"
-              className="inline-flex items-center gap-1 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
-              title="Download compiled production build"
+              href="/source-code.zip"
+              download="source-code.zip"
+              className="inline-flex items-center gap-1 font-medium text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+              title="Download entire raw project workspace (source-code.zip)"
             >
-              <Download className="w-3.5 h-3.5" />
-              <span>dist.zip</span>
+              <Download className="w-3.5 h-3.5 text-stone-600 dark:text-stone-400" />
+              <span>source-code.zip</span>
             </a>
             <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
             <a
