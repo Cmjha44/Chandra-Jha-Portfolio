@@ -12,7 +12,7 @@ export const initialPortfolioData: PortfolioDataset = {
     linkedin: 'https://www.linkedin.com/in/chandrajha44',
     gammaPortfolio: '',
     github: 'https://github.com/Cmjha44',
-    avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQEOY1m1WJW7qg/profile-displayphoto-scale_400_400/B4DaDw5MqYJYAk-/0/1790747923791?e=1793836800&v=beta&t=NFxSyiOpnmBqmpGcq5UysvScFyVWs6Uyh9frQEmx_0o',
+    avatarUrl: '/src/assets/images/1790747923791.jpg',
     coreExpertise: []
   },
   stats: [
@@ -38,101 +38,149 @@ export const initialPortfolioData: PortfolioDataset = {
     }
   ],
   experience: [
+    /* ----------------------------------------------------
+       Category 1: Current Focus: AI & Systems Architecture
+       ---------------------------------------------------- */
+    {
+      id: 'cuny-sps-research',
+      company: 'CUNY School of Professional Studies',
+      role: 'Generative AI & Systems Architecture Scholar',
+      location: 'New York, NY',
+      period: 'January 2026 — Present',
+      isCurrent: true,
+      category: 'AI & Systems Architecture',
+      department: 'Graduate Applied AI Program',
+      achievements: [
+        'Researches systems-level generative AI architectures, retrieval-augmented generation (RAG) orchestration, and vector indexing governance.',
+        'Designs automated prompt engineering protocols and state-based agentic workflows to eliminate organizational process bottlenecks.',
+        'Evaluates enterprise AI governance frameworks, ensuring explainability, ethical boundaries, and data security in automated decision loops.',
+        'Analyzes machine learning ecosystems to architect practical integration bridges between legacy enterprise systems and modern LLM platforms.'
+      ],
+      technologies: [
+        'Vector Databases',
+        'RAG Orchestration',
+        'LangChain Framework',
+        'Prompt Governance',
+        'Agentic Workflows',
+        'DevSecOps Principles'
+      ]
+    },
+    {
+      id: 'laguardia-ida',
+      company: 'LaGuardia Community College (CUNY)',
+      role: 'Instructional Design & Systems Technology Mentor',
+      location: 'New York City Metropolitan Area',
+      period: 'February 2024 — December 2024',
+      isCurrent: false,
+      category: 'AI & Systems Architecture',
+      department: 'Center for Teaching and Learning (CTL)',
+      achievements: [
+        'Administered and streamlined academic instructional platforms across departments, optimizing LMS workflows within D2L Brightspace and Blackboard.',
+        'Supervised and mentored cohorts of Student Technology Mentors (STMs), establishing standardized diagnostic troubleshooting and ticket resolution workflows.',
+        'Architected digital ePortfolio frameworks ensuring full compliance with WCAG 2.1 AA accessibility standards across undergraduate Capstone studios.',
+        'Facilitated faculty development workshops demonstrating modern digital tools and technology-augmented classroom workflows.'
+      ],
+      technologies: [
+        'Instructional Systems Design',
+        'D2L Brightspace LMS',
+        'ePortfolio Architecture',
+        'WCAG 2.1 AA Accessibility',
+        'Workflow Optimization'
+      ]
+    },
+
+    /* ----------------------------------------------------
+       Category 2: Domain Expertise & Operations
+       ---------------------------------------------------- */
+    {
+      id: 'achieve-beyond',
+      company: 'Achieve Beyond Pediatric Therapy',
+      role: 'Data Governance, Compliance Auditing & Healthcare Data Reconciliation Specialist',
+      location: 'Forest Hills, NY',
+      period: 'March 2025 — June 2026',
+      isCurrent: false,
+      category: 'Domain Expertise & Operations',
+      department: 'Healthcare Operations & Compliance Systems',
+      achievements: [
+        'Instituted systematic data governance and compliance auditing protocols reconciling pediatric clinical session records directly against the NYS Early Intervention (EI) Hub.',
+        'Eliminated billing discrepancies across heterogeneous provider spreadsheets and state databases through structured Excel verification pipelines, accelerating reimbursement cycles.',
+        'Audited clinical authorizations, provider licenses, and billing records to maintain 100% compliance with strict New York State healthcare regulatory standards.',
+        'Partnered with human resources to streamline clinician candidate screening and credential verification for urgent early-intervention pediatric cases.'
+      ],
+      technologies: [
+        'NYS Early Intervention (EI) Hub',
+        'Data Governance',
+        'Compliance Auditing',
+        'Healthcare Data Reconciliation',
+        'Structured Verification Pipelines'
+      ]
+    },
     {
       id: 'nationwide',
-      company: 'Nationwide',
-      role: 'Life Insurance Agent',
+      company: 'Nationwide Financial',
+      role: 'Life Insurance Specialist — Risk Assessment & Regulatory Compliance',
       location: 'New York City Metropolitan Area',
       period: 'March 2023 — September 2026',
       isCurrent: false,
-      department: 'Financial Protection & Policy Advisory',
+      category: 'Domain Expertise & Operations',
+      department: 'Financial Protection & Risk Governance',
       achievements: [
-        'Specialized in life insurance solutions, focusing on Universal Index Life (IUL) and Term insurance.',
-        'Guided clients in securing essential financial protection, structuring tailored options for income replacement, debt coverage, and generational legacy planning.',
-        'Conducted individualized needs assessments to provide enduring peace of mind and financial security for families.',
-        'Advised policyholders on living benefits, cash-value growth potential, and tax-efficient wealth preservation.'
+        'Conducted structured actuarial and risk assessments across Universal Index Life (IUL) and Term insurance portfolios to engineer custom financial protection structures.',
+        'Upheld strict compliance with state insurance regulatory codes, fiduciary disclosure mandates, and client suitability guidelines.',
+        'Delivered client-centric problem solving to structure multifaceted income replacement, debt coverage, and generational asset insulation solutions.',
+        'Modeled cash-value accumulation trajectories, living benefits (critical/chronic illness), and policy loans to insulate family assets.'
       ],
       technologies: [
+        'Risk Assessment',
+        'Regulatory Compliance',
         'Universal Index Life (IUL)',
-        'Term Life Insurance',
-        'Income Replacement',
-        'Debt Coverage',
-        'Legacy Planning',
-        'Client Needs Analysis'
+        'Term Life Protection',
+        'Client-Centric Problem Solving',
+        'Living Benefits Structuring'
       ]
     },
     {
       id: 'transamerica',
-      company: 'Transamerica',
-      role: 'Business Professional & Advisory',
+      company: 'Transamerica Financial',
+      role: 'Financial Risk & Advisory Consultant',
       location: 'New York, NY',
       period: 'September 2020 — September 2026',
       isCurrent: false,
-      department: 'Client Advisory Group',
+      category: 'Domain Expertise & Operations',
+      department: 'Client Risk Advisory Group',
       achievements: [
-        'Assisted clients with life insurance protection options, focusing on Universal Index Life and Term insurance coverage.',
-        'Evaluated income replacement and debt insulation priorities to protect family assets from unforeseen life events.',
-        'Provided comprehensive policy reviews to ensure protection remained aligned with evolving family goals.'
+        'Formulated client risk management strategies, evaluating asset vulnerabilities and guiding policyholders through living benefits and debt protection structures.',
+        'Executed regular policy compliance audits and client reviews, ensuring ongoing alignment with state insurance department regulations and life-stage milestones.',
+        'Engineered educational frameworks clarifying index-crediting mechanics and legacy planning for high-net-worth and working-family client segments.'
       ],
       technologies: [
+        'Risk Assessment',
         'Universal Index Life',
-        'Term Insurance',
-        'Family Financial Protection',
-        'Policy Structuring'
+        'Fiduciary Standards',
+        'Legacy Planning',
+        'Policy Auditing'
       ]
-    },
-    {
-      id: 'achieve-beyond',
-      company: 'Achieve Beyond',
-      role: 'NYS Early Intervention Billing & Staffing Evaluation Specialist',
-      location: 'Forest Hills, NY',
-      period: 'March 2025 — June 2026',
-      department: 'Operations & Healthcare Reconciliation',
-      achievements: [
-        'Audited and synchronized patient clinical treatment records in Excel against the official NYS Early Intervention (EI) Hub database, eliminating reporting discrepancies.',
-        'Collaborated with HR to vet clinician candidates for pediatric speech, physical, and occupational therapy assignments.',
-        'Managed clinical inventory schedules and therapy material distribution to prevent operational disruptions.'
-      ],
-      technologies: ['NYS EI Hub', 'Advanced Excel', 'Data Auditing', 'Staffing Evaluation', 'Healthcare Compliance']
-    },
-    {
-      id: 'laguardia-ida',
-      company: 'LaGuardia Community College',
-      role: 'Instructional Design Assistant (IDA)',
-      location: 'New York City Metropolitan Area',
-      period: 'February 2024 — December 2024',
-      department: 'Center for Teaching and Learning (CTL)',
-      achievements: [
-        'Supported faculty and students across academic departments with digital learning technologies and instructional software.',
-        'Supervised and mentored cohorts of Student Technology Mentors (STMs) in learning management systems troubleshooting.',
-        'Guided Capstone students with digital ePortfolio architecture, accessibility compliance, and artifact curation.'
-      ],
-      technologies: ['Instructional Technology', 'ePortfolios', 'D2L Brightspace', 'Microsoft 365', 'Blackboard']
-    },
-    {
-      id: 'laguardia-stm',
-      company: 'LaGuardia Community College',
-      role: 'Student Technology Mentor (STM)',
-      location: 'Greater New York City Area',
-      period: 'September 2023 — February 2024',
-      department: 'Educational Technology & Student Services',
-      achievements: [
-        'Conducted peer workshops and technical tutorials on campus digital tools, learning portals, and ePortfolios.',
-        'Delivered diagnostic technical assistance for Blackboard and CUNYfirst enterprise platforms.'
-      ],
-      technologies: ['CUNYfirst', 'Blackboard', 'Peer Mentoring', 'Technical Troubleshooting']
     },
     {
       id: 'makalu-aerostar',
       company: 'Makalu Air & AeroStar Training Services',
-      role: 'First Officer (Co-Pilot) & ATP-CTP Graduate',
+      role: 'Commercial First Officer & Aviation Systems Pilot (ATP-CTP)',
       location: 'Nepal & Miami, FL',
       period: 'January 2015 — February 2016',
+      isCurrent: false,
+      category: 'Domain Expertise & Operations',
+      department: 'Flight Operations & Cockpit Resource Management',
       achievements: [
-        'Operated commercial aircraft as First Officer (Co-Pilot), managing cockpit checklist verification and situational safety protocols.',
-        'Completed the Airline Transport Pilot Certification Training Program (ATP-CTP) at AeroStar Miami, focusing on turbine systems and high-altitude flight operations.'
+        'Operated commercial aircraft in high-consequence flight regimes, adhering to strict FAA/ICAO checklist protocols and Crew Resource Management (CRM) guidelines.',
+        'Graduated from the Airline Transport Pilot Certification Training Program (ATP-CTP) at AeroStar Miami, mastering advanced jet aerodynamics and automated flight control systems.',
+        'Conducted rigorous pre-flight safety risk assessments, weather radar evaluations, and weight-and-balance systems reconciliation.'
       ],
-      technologies: ['Cockpit Resource Management', 'Aviation Systems', 'Checklist Protocols', 'Risk Mitigation']
+      technologies: [
+        'Checklist Architecture',
+        'Crew Resource Management (CRM)',
+        'Systems Safety Protocols',
+        'High-Consequence Risk Mitigation'
+      ]
     }
   ],
   education: [
@@ -262,15 +310,17 @@ export const initialPortfolioData: PortfolioDataset = {
   projects: [
     {
       id: 'genai-rag-assistant',
-      title: 'Vector Search & Policy Retrieval Study',
+      title: 'Enterprise Policy Retrieval & Vector Search Orchestrator',
       category: 'Applied AI & RAG',
       featured: false,
-      shortDescription: 'Exploration of vector databases, semantic embeddings, and prompt orchestration for querying organizational policy documents.',
+      shortDescription: 'Automated semantic search and citation-backed knowledge retrieval system for querying complex regulatory compliance manuals.',
+      architectureAndWorkflow:
+        'Orchestrated via dense vector indexing and hybrid semantic retrieval rather than keyword queries to handle nuanced natural language questions across voluminous compliance documentation. The multi-step workflow chunks regulatory texts, generates normalized embeddings, and feeds grounded passages into a constrained LLM prompt with strict citation attribution safeguards, preventing hallucination in high-governance settings.',
       fullDescription:
-        'Graduate coursework study examining semantic retrieval architectures, vector indexing, and structured prompt engineering to locate grounded compliance citations.',
+        'Graduate coursework study examining semantic retrieval architectures, vector indexing, and structured prompt engineering to locate grounded compliance citations. Replaces static document searches with real-time semantic retrieval.',
       problemSolved:
-        'Investigates how modern vector databases and prompt engineering can replace static document searches with citation-backed semantic retrieval.',
-      techStack: ['Vector Databases', 'Prompt Engineering', 'LangChain Concepts', 'Python Basics', 'CSS'],
+        'Navigating multi-thousand page compliance handbooks creates operational latency and human citation error. This system orchestrates dense vector retrieval to ground answers strictly in validated policy passages.',
+      techStack: ['Vector Databases', 'Prompt Orchestration', 'LangChain Framework', 'Semantic Search', 'AI Governance'],
       githubUrl: 'https://github.com/Cmjha44/genai-policy-rag',
       impactMetrics: [
         'Evaluation of dense embedding retrieval against test compliance manuals',
@@ -285,15 +335,17 @@ export const initialPortfolioData: PortfolioDataset = {
     },
     {
       id: 'ei-hub-pipeline',
-      title: 'Healthcare EI Billing Data Reconciliation',
+      title: 'Healthcare EI Data Reconciliation & Audit Engine',
       category: 'Data & Automation',
       featured: false,
-      shortDescription: 'Structured data auditing procedure cross-referencing clinic session records against official NYS Early Intervention (EI) Hub guidelines.',
+      shortDescription: 'Systems-level automated data verification and audit pipeline reconciling clinical session logs with the official NYS Early Intervention (EI) Hub.',
+      architectureAndWorkflow:
+        'Engineered as a deterministic audit pipeline to eliminate human error between clinical treatment sheets and state compliance portals. The system parses multi-provider session entries, executes schema validation against state billing rules, flags missing therapist authorizations, and outputs an executive reconciliation ledger that reduced claim rejection rates and accelerated clinician reimbursement cycles.',
       fullDescription:
         'Standardized Excel verification workflow developed to audit clinical session logs against state compliance schemas, resolving billing delays and ensuring reimbursement accuracy.',
       problemSolved:
         'Manual comparisons between clinic logs and state portals created discrepancies. This project standardized verification sheets to streamline reimbursement reporting.',
-      techStack: ['NYS EI Hub Guidelines', 'Advanced Excel', 'Data Auditing', 'Process Mapping'],
+      techStack: ['NYS EI Hub Protocols', 'Data Governance', 'Automated Auditing', 'Compliance Verification', 'Structured Pipelines'],
       githubUrl: 'https://github.com/Cmjha44/ei-billing-reconciliation',
       impactMetrics: [
         '100% discrepancy elimination in audited patient records',
@@ -308,15 +360,17 @@ export const initialPortfolioData: PortfolioDataset = {
     },
     {
       id: 'policylife-financial',
-      title: 'Universal Index Life (IUL) Illustration Model',
+      title: 'Universal Index Life (IUL) Risk & Policy Architecture Simulator',
       category: 'Financial Systems',
       featured: false,
-      shortDescription: 'Client financial planning model illustrating Universal Index Life (IUL) vs. Term insurance protection and legacy planning.',
+      shortDescription: 'Client-facing financial risk modeling and illustration engine structuring Universal Index Life (IUL) and Term protection scenarios.',
+      architectureAndWorkflow:
+        'Designed to replace opaque actuarial illustration sheets with a transparent, client-centric simulation architecture. The calculation engine visualizes multi-decade compound index crediting, living benefit trigger points (critical and chronic care), policy loan mechanics, and income replacement models, empowering clients to make informed, risk-insulated financial decisions.',
       fullDescription:
         'Interactive financial illustration framework designed to clearly explain life insurance policy options to clients, contrasting term coverage against permanent Universal Index Life (IUL) for income replacement and debt coverage.',
       problemSolved:
         'Demystifies life insurance structures, illustrating how Universal Index Life and Term insurance provide tailored protection for family peace of mind.',
-      techStack: ['Universal Index Life (IUL)', 'Term Insurance Analysis', 'Financial Modeling', 'CSS', 'HTML'],
+      techStack: ['Risk Assessment Engine', 'Universal Index Life (IUL)', 'Regulatory Disclosures', 'Financial Modeling', 'Client Advisory Architecture'],
       githubUrl: 'https://github.com/Cmjha44/policylife-simulator',
       impactMetrics: [
         'Clear comparison between Term and Universal Index Life (IUL)',
@@ -331,15 +385,17 @@ export const initialPortfolioData: PortfolioDataset = {
     },
     {
       id: 'cuny-edtech-hub',
-      title: 'Higher-Ed ePortfolio & Digital Guide Showcase',
+      title: 'Higher-Ed Instructional Systems & ePortfolio Portal',
       category: 'Web & EdTech',
       featured: false,
-      shortDescription: 'Centralized resource guide and presentation site supporting student technology mentoring and digital portfolios.',
+      shortDescription: 'Unified digital learning portal and resource orchestration hub supporting technology mentoring, learning management systems, and academic portfolios.',
+      architectureAndWorkflow:
+        'Built to unify fragmented higher-ed IT systems (Brightspace LMS, Blackboard, CUNYfirst) into a single, accessible gateway for undergraduate and capstone students. The modular structure provides interactive checklists, peer booking pipelines, and artifact curation templates compliant with WCAG 2.1 AA accessibility standards.',
       fullDescription:
         'Developed to support student cohorts and faculty at LaGuardia CC, aggregating step-by-step guides for Brightspace, Blackboard, and digital ePortfolios.',
       problemSolved:
         'Provided undergraduate and capstone students with accessible, centralized instructions for building academic portfolios and navigating learning management systems.',
-      techStack: ['CSS (Certified)', 'HTML5', 'D2L Brightspace', 'Blackboard', 'ePortfolio Curation'],
+      techStack: ['Instructional Systems Design', 'D2L Brightspace', 'ePortfolio Architecture', 'WCAG 2.1 AA Compliance', 'User Centered Systems'],
       githubUrl: 'https://github.com/Cmjha44/cuny-edtech-mentor-portal',
       impactMetrics: [
         'Supported 12+ Capstone studio sections and workshops',

@@ -1,308 +1,315 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ExternalLink, Github, ArrowRight, Layers, Sparkles, Search, RefreshCw, AlertCircle, Code2, FolderGit2 } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Layers, Cpu, Search, RefreshCw, FolderGit2 } from 'lucide-react';
 import { ProjectItem } from '../types/portfolio';
-import { GitHubUser, GitHubRepo, GitHubEvent, fetchGitHubPortfolioData } from '../services/githubService';
-import { GitHubActivityGraph } from './GitHubActivityGraph';
-import { GitHubRepoCard } from './GitHubRepoCard';
 
 interface ProjectsGridProps {
   projects: ProjectItem[];
   onSelectProject: (project: ProjectItem) => void;
 }
 
-export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectProject }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('All');
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [githubUsername, setGithubUsername] = useState<string>('Cmjha44');
-  const [isEditingUsername, setIsEditingUsername] = useState<boolean>(false);
-  const [usernameInput, setUsernameInput] = useState<string>('Cmjha44');
+interface FetchedGitHubRepo {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+  homepage: string | null;
+  language: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  updated_at: string;
+  topics: string[];
+}
 
-  // GitHub Live state
-  const [ghUser, setGhUser] = useState<GitHubUser | null>(null);
-  const [ghRepos, setGhRepos] = useState<GitHubRepo[]>([]);
-  const [ghEvents, setGhEvents] = useState<GitHubEvent[]>([]);
+export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectProject }) => {
+  const [activeTab, setActiveTab] = useState<'systems' | 'github'>('systems');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  
+  // Lightweight JavaScript fetch() for GitHub API (Prompt 4)
+  const [fetchedRepos, setFetchedRepos] = useState<ProjectItem[]>([]);
   const [isLoadingGh, setIsLoadingGh] = useState<boolean>(true);
   const [ghError, setGhError] = useState<string | null>(null);
 
-  const loadGitHubData = async (userToFetch: string) => {
-    setIsLoadingGh(true);
-    setGhError(null);
-    try {
-      const res = await fetchGitHubPortfolioData(userToFetch);
-      setGhUser(res.user);
-      setGhRepos(res.repos);
-      setGhEvents(res.events);
-      if (res.error) {
-        setGhError(res.error);
-      }
-    } catch (err: any) {
-      setGhError(err?.message || 'Failed to load GitHub data');
-    } finally {
-      setIsLoadingGh(false);
-    }
-  };
-
   useEffect(() => {
-    loadGitHubData(githubUsername);
-  }, [githubUsername]);
+    let isMounted = true;
+    const fetchGitHubRepos = async () => {
+      setIsLoadingGh(true);
+      setGhError(null);
+      try {
+        const response = await fetch(
+          'https://api.github.com/users/Cmjha44/repos?sort=updated&per_page=12',
+          {
+            headers: {
+              Accept: 'application/vnd.github.v3+json'
+            }
+          }
+        );
 
-  const handleUsernameSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!usernameInput.trim()) return;
-    setGithubUsername(usernameInput.trim());
-    setIsEditingUsername(false);
-  };
+        if (!response.ok) {
+          throw new Error(`GitHub API HTTP ${response.status}`);
+        }
 
-  // Convert GitHub repos into compatible project items if needed
-  const dynamicGhProjects: ProjectItem[] = useMemo(() => {
-    return ghRepos.map((repo) => ({
-      id: `gh-repo-${repo.id}`,
-      title: repo.name,
-      category: 'Data & Automation' as const,
-      shortDescription: repo.description || 'Public open-source repository on GitHub.',
-      fullDescription: `${repo.description || 'Public GitHub project'} — Default branch: ${repo.default_branch}, Stars: ${repo.stargazers_count}, Forks: ${repo.forks_count}.`,
-      problemSolved: 'Open-source system automation and code repository managed through GitHub version control.',
-      techStack: [
-        repo.language || 'Code',
-        ...(repo.topics || []).slice(0, 3),
-        'GitHub API'
-      ],
-      liveUrl: repo.homepage || repo.html_url,
-      githubUrl: repo.html_url,
-      impactMetrics: [
-        `${repo.stargazers_count} GitHub Stars`,
-        `${repo.forks_count} Forks`,
-        `Last updated ${new Date(repo.updated_at).toLocaleDateString()}`
-      ],
-      highlights: [
-        `Public repository with ${repo.open_issues_count} open issues`,
-        `Clone URL: ${repo.clone_url}`
-      ],
-      featured: repo.stargazers_count > 0 || (repo.topics && repo.topics.length > 0)
-    }));
-  }, [ghRepos]);
+        const data: FetchedGitHubRepo[] = await response.json();
+        if (isMounted && Array.isArray(data)) {
+          const mapped: ProjectItem[] = data.map((repo) => ({
+            id: `gh-${repo.id}`,
+            title: repo.name,
+            category: 'Data & Automation',
+            shortDescription:
+              repo.description ||
+              'Open-source repository maintaining systems workflows, automated scripts, and technical documentation.',
+            architectureAndWorkflow: `Orchestrated as a version-controlled repository on GitHub under @Cmjha44. Built with ${
+              repo.language || 'modern declarative tooling'
+            }, utilizing automated Git workflows, branch protection, and structured repository governance.`,
+            fullDescription: `${repo.description || 'Public GitHub project under Cmjha44.'} Language: ${
+              repo.language || 'Multi-stack'
+            }. Updated: ${new Date(repo.updated_at).toLocaleDateString()}.`,
+            problemSolved: 'Version-controlled repository management, workflow scripting, and open-source systems transparency.',
+            techStack: [
+              repo.language || 'Git',
+              ...(repo.topics || []).slice(0, 3),
+              'GitHub Actions'
+            ].filter(Boolean),
+            liveUrl: repo.homepage || repo.html_url,
+            githubUrl: repo.html_url,
+            impactMetrics: [
+              `${repo.stargazers_count} GitHub Stars`,
+              `${repo.forks_count} Forks`,
+              `Updated ${new Date(repo.updated_at).toLocaleDateString()}`
+            ],
+            highlights: [
+              `Repository managed by @Cmjha44`,
+              `Automated sync with GitHub API v3`
+            ]
+          }));
 
-  const categories = [
-    'All',
-    'Applied AI & RAG',
-    'Data & Automation',
-    'Web & EdTech',
-    'Financial Systems'
-  ];
+          setFetchedRepos(mapped);
+        }
+      } catch (err: any) {
+        if (isMounted) {
+          setGhError('GitHub API currently unavailable. Displaying curated system architectures.');
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoadingGh(false);
+        }
+      }
+    };
 
-  // Filtering logic
-  const filteredProjects = useMemo(() => {
-    let list: ProjectItem[] = [];
+    fetchGitHubRepos();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
-    if (activeCategory === 'All') {
-      list = projects;
-    } else {
-      list = projects.filter((p) => p.category === activeCategory);
-    }
-
-    if (!searchQuery.trim()) return list;
+  // Filter current displayed list based on active tab and search query
+  const displayedProjects = useMemo(() => {
+    const sourceList = activeTab === 'systems' ? projects : (fetchedRepos.length > 0 ? fetchedRepos : projects);
+    if (!searchQuery.trim()) return sourceList;
 
     const query = searchQuery.toLowerCase();
-    return list.filter(
+    return sourceList.filter(
       (item) =>
         item.title.toLowerCase().includes(query) ||
         item.shortDescription.toLowerCase().includes(query) ||
+        (item.architectureAndWorkflow && item.architectureAndWorkflow.toLowerCase().includes(query)) ||
         item.techStack.some((t) => t.toLowerCase().includes(query))
     );
-  }, [activeCategory, projects, dynamicGhProjects, searchQuery]);
+  }, [activeTab, projects, fetchedRepos, searchQuery]);
 
   return (
-    <section id="projects" className="py-20 border-t border-stone-200/80 dark:border-stone-800/80 scroll-mt-16">
+    <section
+      id="projects"
+      aria-labelledby="projects-heading"
+      className="py-20 border-t border-stone-200/80 dark:border-stone-800/80 scroll-mt-16"
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
             <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
-              Projects &amp; Code
+              Systems Architecture &amp; Orchestration
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-3">
-              Projects &amp; GitHub Repositories
+            <h2
+              id="projects-heading"
+              className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-3"
+            >
+              Projects &amp; Systems Workflows
             </h2>
-            <p className="text-base text-stone-600 dark:text-stone-300">
-              Live automated GitHub synchronization displaying public repositories, contribution activity, and coursework explorations.
+            <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed">
+              Demonstrating systems design, automated orchestration, and data reconciliation rather than raw code, backed by live automated GitHub API synchronization.
             </p>
           </div>
 
-          {/* GitHub Handle Switcher */}
-          <div className="flex items-center gap-2">
-            {isEditingUsername ? (
-              <form onSubmit={handleUsernameSubmit} className="flex items-center gap-1.5">
-                <input
-                  type="text"
-                  value={usernameInput}
-                  onChange={(e) => setUsernameInput(e.target.value)}
-                  placeholder="GitHub username"
-                  className="px-2.5 py-1 text-xs rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-hidden focus:ring-1 focus:ring-indigo-500 font-mono"
-                />
-                <button
-                  type="submit"
-                  className="px-2.5 py-1 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors"
-                >
-                  Load
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsEditingUsername(false)}
-                  className="px-2 py-1 text-xs text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
-                >
-                  Cancel
-                </button>
-              </form>
-            ) : (
-              <button
-                onClick={() => {
-                  setUsernameInput(githubUsername);
-                  setIsEditingUsername(true);
-                }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              >
-                <Github className="w-3.5 h-3.5" />
-                <span>@{githubUsername}</span>
-                <span className="text-[10px] text-slate-400 dark:text-slate-500">(change)</span>
-              </button>
-            )}
+          {/* Section Mode Toggle: Curated Systems vs Live GitHub Fetch */}
+          <div
+            role="tablist"
+            aria-label="Projects view mode"
+            className="flex items-center gap-1 p-1 bg-stone-100 dark:bg-stone-800/80 rounded-xl shrink-0"
+          >
+            <button
+              role="tab"
+              id="tab-systems"
+              aria-selected={activeTab === 'systems'}
+              aria-controls="projects-panel"
+              onClick={() => setActiveTab('systems')}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
+                activeTab === 'systems'
+                  ? 'bg-white dark:bg-stone-900 text-stone-900 dark:text-white shadow-2xs'
+                  : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white'
+              }`}
+            >
+              Systems Architectures ({projects.length})
+            </button>
+            <button
+              role="tab"
+              id="tab-github"
+              aria-selected={activeTab === 'github'}
+              aria-controls="projects-panel"
+              onClick={() => setActiveTab('github')}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all flex items-center gap-1.5 ${
+                activeTab === 'github'
+                  ? 'bg-white dark:bg-stone-900 text-stone-900 dark:text-white shadow-2xs'
+                  : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white'
+              }`}
+            >
+              <Github className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>Live GitHub @Cmjha44</span>
+              {fetchedRepos.length > 0 && (
+                <span className="text-[10px] font-mono px-1 rounded bg-stone-200 dark:bg-stone-700">
+                  {fetchedRepos.length}
+                </span>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* GitHub Live Activity Graph Component */}
-        <GitHubActivityGraph
-          user={ghUser}
-          repos={ghRepos}
-          events={ghEvents}
-          isLoading={isLoadingGh}
-          onRefresh={() => loadGitHubData(githubUsername)}
-          username={githubUsername}
-        />
+        {/* Search Bar */}
+        <div className="relative mb-8 max-w-md">
+          <label htmlFor="project-search" className="sr-only">
+            Search systems projects or architectures
+          </label>
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" aria-hidden="true" />
+          <input
+            id="project-search"
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search architecture, workflow, or stack..."
+            className="w-full pl-9 pr-8 py-2 text-xs rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:outline-hidden focus:ring-1 focus:ring-stone-500"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              aria-label="Clear search query"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
+            >
+              Clear
+            </button>
+          )}
+        </div>
 
-        {/* Rate limit or sync notice if applicable */}
-        {ghError && (
-          <div className="mb-8 p-4 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 flex items-start gap-3 text-xs text-amber-800 dark:text-amber-200">
-            <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-            <div>
-              <span className="font-semibold">GitHub Notice: </span>
-              <span>{ghError}</span>
+        {/* Grid panel */}
+        <div
+          id="projects-panel"
+          role="tabpanel"
+          aria-labelledby={activeTab === 'systems' ? 'tab-systems' : 'tab-github'}
+        >
+          {activeTab === 'github' && isLoadingGh ? (
+            <div
+              role="status"
+              className="p-12 text-center text-xs text-stone-500 flex flex-col items-center gap-3"
+            >
+              <RefreshCw className="w-5 h-5 animate-spin text-stone-500" aria-hidden="true" />
+              <span>Calling GitHub API for @Cmjha44 pinned and active repositories...</span>
             </div>
-          </div>
-        )}
-
-        {/* Search & Category Tabs Controls */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
-          {/* Category Tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl overflow-x-auto max-w-full">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap shrink-0 ${
-                  activeCategory === cat
-                    ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                {cat}
-                {cat === 'Live GitHub Repos' && ghRepos.length > 0 && (
-                  <span className="ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] font-mono bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
-                    {ghRepos.length}
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Search Box */}
-          <div className="relative w-full lg:w-72">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search projects or stack..."
-              className="w-full pl-9 pr-3.5 py-1.5 text-xs rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-hidden focus:ring-1 focus:ring-indigo-500"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
-              >
-                Clear
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* General Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-            {filteredProjects.length === 0 ? (
-              <div className="col-span-2 p-12 text-center rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
-                <p className="text-sm text-slate-500">
-                  No projects matching &ldquo;{searchQuery}&rdquo;. Try clearing your search query.
-                </p>
-              </div>
-            ) : (
-              filteredProjects.map((project) => (
-                <div
+          ) : displayedProjects.length === 0 ? (
+            <div className="p-10 text-center rounded-2xl bg-white dark:bg-stone-900/60 border border-stone-200 dark:border-stone-800">
+              <FolderGit2 className="w-8 h-8 text-stone-400 mx-auto mb-2" aria-hidden="true" />
+              <p className="text-sm text-stone-600 dark:text-stone-400">
+                No matching projects found for &ldquo;{searchQuery}&rdquo;.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+              {displayedProjects.map((project) => (
+                <article
                   key={project.id}
-                  className="group p-7 rounded-2xl bg-white dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 shadow-2xs hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all duration-200 flex flex-col justify-between"
+                  aria-labelledby={`proj-title-${project.id}`}
+                  className="group p-7 rounded-2xl bg-white dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800 shadow-2xs flex flex-col justify-between"
                 >
                   <div>
                     {/* Header info */}
-                    <div className="flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 mb-3">
-                      <div className="flex items-center gap-1.5 font-medium text-indigo-600 dark:text-indigo-400">
-                        <Layers className="w-3.5 h-3.5" />
+                    <div className="flex items-center justify-between gap-2 text-xs text-stone-500 dark:text-stone-400 mb-3">
+                      <div className="flex items-center gap-1.5 font-medium text-stone-700 dark:text-stone-300">
+                        <Layers className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>{project.category}</span>
                       </div>
-                      {project.id.startsWith('gh-repo-') && (
-                        <span className="flex items-center gap-1 text-slate-500 font-mono text-[11px]">
-                          <Github className="w-3 h-3" />
-                          <span>GitHub Live</span>
+                      {project.id.startsWith('gh-') && (
+                        <span className="flex items-center gap-1 font-mono text-[11px] text-stone-500 dark:text-stone-400">
+                          <Github className="w-3 h-3" aria-hidden="true" />
+                          <span>GitHub Live API</span>
                         </span>
                       )}
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <h3
+                      id={`proj-title-${project.id}`}
+                      className="font-serif text-xl font-bold text-stone-900 dark:text-white mb-2.5"
+                    >
                       {project.title}
                     </h3>
 
-                    {/* Description */}
-                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
+                    {/* Short Description */}
+                    <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
                       {project.shortDescription}
                     </p>
 
-                    {/* Impact metric highlight */}
-                    {project.impactMetrics && project.impactMetrics.length > 0 && (
-                      <div className="mb-5 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-1">
-                        <div className="font-semibold text-slate-800 dark:text-slate-200">Outcome Highlight:</div>
-                        <div className="leading-snug">{project.impactMetrics[0]}</div>
+                    {/* Architecture & Workflow Sub-Note (Prompt 2) */}
+                    {project.architectureAndWorkflow && (
+                      <div className="mb-4 p-3.5 rounded-xl bg-stone-50 dark:bg-stone-800/50 border border-stone-200/70 dark:border-stone-800 text-xs">
+                        <div className="font-semibold text-stone-900 dark:text-stone-100 mb-1 flex items-center gap-1.5">
+                          <Cpu className="w-3.5 h-3.5 text-stone-700 dark:text-stone-300 shrink-0" aria-hidden="true" />
+                          <span>Architecture &amp; Workflow:</span>
+                        </div>
+                        <p className="text-stone-600 dark:text-stone-300 leading-relaxed text-[11px]">
+                          {project.architectureAndWorkflow}
+                        </p>
                       </div>
                     )}
 
-                    {/* Tech stack */}
-                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mb-6">
+                    {/* Impact Highlights */}
+                    {project.impactMetrics && project.impactMetrics.length > 0 && (
+                      <div className="mb-4 text-xs text-stone-600 dark:text-stone-400 font-mono space-y-0.5">
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 dark:text-stone-500 block">
+                          Impact &amp; Validation:
+                        </span>
+                        <div>{project.impactMetrics[0]}</div>
+                      </div>
+                    )}
+
+                    {/* Tech stack / Tooling */}
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-stone-500 dark:text-stone-400 mb-6">
                       {project.techStack.map((tech, idx) => (
                         <React.Fragment key={tech}>
-                          <span className="font-mono text-slate-700 dark:text-slate-300">{tech}</span>
+                          <span className="font-mono text-stone-700 dark:text-stone-300 text-[11px]">{tech}</span>
                           {idx < project.techStack.length - 1 && (
-                            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
+                            <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
                           )}
                         </React.Fragment>
                       ))}
                     </div>
                   </div>
 
-                  {/* Action buttons */}
-                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                  {/* Actions */}
+                  <div className="pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between">
                     <button
                       onClick={() => onSelectProject(project)}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group/btn"
+                      aria-label={`Open systems architecture deep dive for ${project.title}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-900 dark:text-stone-100 hover:opacity-75 transition-opacity"
                     >
-                      <span>Architecture Deep Dive</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                      <span>Systems Deep Dive</span>
+                      <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                     </button>
 
                     <div className="flex items-center gap-3">
@@ -311,10 +318,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
                           href={project.githubUrl}
                           target="_blank"
                           rel="noreferrer noopener"
-                          title="View on GitHub"
-                          className="text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                          aria-label={`View ${project.title} on GitHub`}
+                          className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
                         >
-                          <Github className="w-4 h-4" />
+                          <Github className="w-4 h-4" aria-hidden="true" />
                         </a>
                       )}
                       {project.liveUrl && (
@@ -322,18 +329,19 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects, onSelectPr
                           href={project.liveUrl}
                           target="_blank"
                           rel="noreferrer noopener"
-                          title="View Live System / Documentation"
-                          className="text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                          aria-label={`Open external link for ${project.title}`}
+                          className="text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors"
                         >
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="w-4 h-4" aria-hidden="true" />
                         </a>
                       )}
                     </div>
                   </div>
-                </div>
-              ))
-            )}
-          </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

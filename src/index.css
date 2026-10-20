@@ -33,3 +33,53 @@
     display: block !important;
   }
 }
+
+/* Accessibility (a11y): High Contrast Mode */
+html.high-contrast {
+  filter: contrast(125%);
+}
+
+html.high-contrast body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+html.high-contrast.dark body {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+
+html.high-contrast a,
+html.high-contrast button {
+  text-decoration-thickness: 1.5px;
+}
+
+html.high-contrast a:focus-visible,
+html.high-contrast button:focus-visible,
+html.high-contrast input:focus-visible,
+html.high-contrast textarea:focus-visible {
+  outline: 3px solid #000000 !important;
+  outline-offset: 3px !important;
+}
+
+html.high-contrast.dark a:focus-visible,
+html.high-contrast.dark button:focus-visible,
+html.high-contrast.dark input:focus-visible,
+html.high-contrast.dark textarea:focus-visible {
+  outline: 3px solid #ffffff !important;
+  outline-offset: 3px !important;
+}
+
+html.high-contrast [class*="text-stone-500"],
+html.high-contrast [class*="text-stone-600"],
+html.high-contrast [class*="text-slate-500"],
+html.high-contrast [class*="text-slate-600"] {
+  color: #1a1a1a !important;
+}
+
+html.high-contrast.dark [class*="text-stone-400"],
+html.high-contrast.dark [class*="text-stone-500"],
+html.high-contrast.dark [class*="text-stone-300"],
+html.high-contrast.dark [class*="text-slate-400"] {
+  color: #f5f5f5 !important;
+}

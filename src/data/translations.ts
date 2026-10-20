@@ -1,4 +1,4 @@
-export type SupportedLanguage = 'en' | 'ne' | 'es';
+export type SupportedLanguage = 'en' | 'ne';
 
 export interface Translations {
   nav: {
@@ -245,88 +245,6 @@ export const translations: Record<SupportedLanguage, Translations> = {
     footer: {
       allRights: 'सर्वाधिकार सुरक्षित',
       backToTop: 'माथि जानुहोस्'
-    }
-  },
-  es: {
-    nav: {
-      about: 'Sobre mí',
-      experience: 'Experiencia',
-      skills: 'Habilidades',
-      education: 'Educación',
-      projects: 'Proyectos',
-      contact: 'Contacto',
-      resume: 'Currículum'
-    },
-    hero: {
-      kicker: 'Chandra Jha · Portafolio y Currículum',
-      headline: 'Gestión de IA a nivel de sistemas y orquestación de flujos de trabajo.',
-      subheadline: 'Candidato a Maestría en IA Generativa en CUNY SPS · Sistemas de Información · Six Sigma Green Belt',
-      summary:
-        'Me especializo en la gestión de IA a nivel de sistemas y la orquestación de flujos de trabajo, transformando capacidades avanzadas de IA generativa en procesos organizacionales confiables y centrados en las personas. Junto con mi experiencia administrativa en auditorías de datos de salud y protección de seguros de vida, encuentro equilibrio en el senderismo, la naturaleza y tranquilas aventuras al aire libre.',
-      getInTouch: 'Ponerse en Contacto',
-      viewResume: 'Ver Currículum',
-      downloadZip: 'Descargar Dist (ZIP)',
-      downloadReadme: 'Descargar README'
-    },
-    about: {
-      kicker: 'Acerca de y Perspectiva',
-      headline: 'Precisión en los sistemas, arraigada en la naturaleza.',
-      p1: 'Mi trayectoria profesional se basa en una profunda diligencia administrativa y la resolución sistemática de problemas. Desde la conciliación de registros clínicos contra el portal oficial NYS Early Intervention (EI) Hub hasta el asesoramiento a familias sobre seguros Universal Index Life (IUL) y de término, me enfoco en brindar claridad a normativas complejas.',
-      p2: 'Actualmente cursando mi Maestría en Ciencias en IA Generativa en CUNY SPS, investigo cómo los modelos de aprendizaje automático, bases de datos vectoriales y la orquestación de procesos pueden gestionarse de forma responsable para generar valor real.',
-      p3: 'Más allá del trabajo y el estudio, encuentro equilibrio recorriendo senderos de montaña y explorando paisajes naturales tranquilos. Estar al aire libre brinda la calma necesaria para abordar desafíos técnicos complejos con paciencia y claridad.',
-      hiking: 'Senderismo',
-      wilderness: 'Naturaleza Tranquila',
-      exploration: 'Exploración Serena',
-      photoCaption: 'Reflejos en el sendero alpino · Naturaleza y Senderismo'
-    },
-    skills: {
-      kicker: 'Competencias Principales y Habilidades',
-      headline: 'Fundamentos técnicos y capacidades operativas.',
-      subhead: 'Enfocado en la gestión de IA a nivel de sistemas, diseño de flujos de trabajo y entornos regulados.',
-      coreTitle: 'Competencias Técnicas Principales',
-      pythonTitle: 'Programación en Python',
-      pythonDesc: 'Fundamentos de scripts, automatización de flujos de trabajo y manipulación de datos.',
-      aiStudioTitle: 'Orquestación con Google AI Studio',
-      aiStudioDesc: 'Integración de API de IA generativa, diseño de prompts y orquestación de procesos.',
-      devSecOpsTitle: 'Gobernanza DevSecOps',
-      devSecOpsDesc: 'Cumplimiento de IA responsable, límites éticos de modelos y operaciones seguras.',
-      vectorDbTitle: 'Bases de datos vectoriales',
-      vectorDbDesc: 'Indexación vectorial semántica, búsqueda de incrustaciones y arquitecturas RAG.'
-    },
-    education: {
-      kicker: 'Formación Académica',
-      headline: 'Educación y Credenciales Académicas',
-      subhead: 'Estudios de posgrado en IA Generativa y formación de grado en Sistemas de Información en la City University of New York (CUNY).',
-      courseworkTitle: 'Cursos y Áreas Temáticas:',
-      certsTitle: 'Certificaciones Profesionales y Licencias'
-    },
-    projects: {
-      kicker: 'Proyectos y Código',
-      headline: 'Proyectos y Repositorios de GitHub',
-      subhead: 'Sincronización automatizada con GitHub que muestra repositorios públicos, actividad de contribución y proyectos académicos.'
-    },
-    contact: {
-      kicker: 'Contacto',
-      headline: 'Conectar y Registrar una Consulta',
-      subhead: 'Los visitantes, reclutadores y colaboradores pueden dejar su información y mensaje a continuación para el registro. Responderé a la brevedad.',
-      directEmail: 'Correo Directo',
-      location: 'Ubicación',
-      formTitle: 'Deje su Información',
-      formSubhead: 'Por favor complete sus datos de contacto para registrar su consulta.',
-      nameLabel: 'Nombre Completo',
-      emailLabel: 'Correo Electrónico',
-      subjectLabel: 'Asunto / Tema de Interés',
-      messageLabel: 'Mensaje / Notas para el Registro',
-      submitBtn: 'Enviar para el Registro',
-      submitting: 'Registrando...',
-      successTitle: 'Información Registrada con Éxito',
-      successDesc: 'Gracias. Su consulta ha sido guardada en el registro oficial.',
-      sendEmailBtn: 'Enviar por Correo Electrónico',
-      recordAnother: 'Registrar Otra Consulta'
-    },
-    footer: {
-      allRights: 'Todos los derechos reservados',
-      backToTop: 'Volver arriba'
     }
   }
 };

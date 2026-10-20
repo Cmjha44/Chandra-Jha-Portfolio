@@ -31,7 +31,7 @@ export default function App() {
   // Language state with localStorage persistence
   const [currentLang, setCurrentLang] = useState<SupportedLanguage>(() => {
     const saved = localStorage.getItem('portfolio_lang');
-    if (saved === 'en' || saved === 'ne' || saved === 'es') return saved;
+    if (saved === 'en' || saved === 'ne') return saved;
     return 'en';
   });
 
@@ -43,6 +43,22 @@ export default function App() {
       console.warn('Lang save:', e);
     }
   };
+
+  // Accessibility: High contrast state with localStorage persistence
+  const [highContrast, setHighContrast] = useState<boolean>(() => {
+    return localStorage.getItem('high_contrast') === 'true';
+  });
+
+  // Sync high-contrast class to <html>
+  useEffect(() => {
+    if (highContrast) {
+      document.documentElement.classList.add('high-contrast');
+      localStorage.setItem('high_contrast', 'true');
+    } else {
+      document.documentElement.classList.remove('high-contrast');
+      localStorage.setItem('high_contrast', 'false');
+    }
+  }, [highContrast]);
 
   // Portfolio dataset state with localStorage persistence
   const [dataset, setDataset] = useState<PortfolioDataset>(() => {
@@ -81,13 +97,15 @@ export default function App() {
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}
+        highContrast={highContrast}
+        setHighContrast={setHighContrast}
         onOpenResume={() => setIsResumeOpen(true)}
         currentLang={currentLang}
         onSelectLang={handleSelectLang}
       />
 
       {/* Main Content Layout */}
-      <main className="flex-1">
+      <main id="main-content" tabIndex={-1} className="flex-1 outline-hidden">
         <Hero
           profile={dataset.profile}
           onOpenResume={() => setIsResumeOpen(true)}

@@ -25,6 +25,7 @@ export interface ExperienceItem {
   period: string;
   isCurrent?: boolean;
   department?: string;
+  category?: 'AI & Systems Architecture' | 'Domain Expertise & Operations';
   achievements: string[];
   technologies: string[];
 }
@@ -53,6 +54,7 @@ export interface ProjectItem {
   shortDescription: string;
   fullDescription: string;
   problemSolved: string;
+  architectureAndWorkflow?: string;
   techStack: string[];
   liveUrl?: string;
   githubUrl?: string;
