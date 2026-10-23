@@ -13,10 +13,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ profile, currentLang
 
   return (
     <section id="about" className="py-20 border-t border-stone-200/80 dark:border-stone-800/80 scroll-mt-16">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center">
-          {/* Left Column: Reflective Narrative */}
-          <div className="md:col-span-7">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div>
+          {/* Reflective Narrative */}
+          <div>
             <span className="text-xs font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 mb-3 block">
               {t.kicker}
             </span>
@@ -44,22 +44,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ profile, currentLang
               <div className="flex items-center gap-1.5">
                 <Compass className="w-4 h-4 text-stone-600 dark:text-stone-300" />
                 <span>{t.exploration}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Nature & Hiking Themed Image */}
-          <div className="md:col-span-5">
-            <div className="relative rounded-2xl overflow-hidden border border-stone-200/80 dark:border-stone-800 shadow-xs bg-stone-100 dark:bg-stone-900">
-              <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80"
-                alt="Tranquil alpine mountain ridge and hiking wilderness"
-                className="w-full aspect-[4/3] object-cover"
-                loading="lazy"
-              />
-              <div className="p-4 bg-stone-50/90 dark:bg-stone-900/90 border-t border-stone-200/80 dark:border-stone-800 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
-                <span className="font-serif italic">{t.photoCaption}</span>
-                <span className="font-mono text-[11px]">Nature</span>
               </div>
             </div>
           </div>
