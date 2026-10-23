@@ -31,8 +31,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
     window.print();
   };
 
-  const aiArchitectureRoles = experience.filter(
-    (e) => e.category === 'AI & Systems Architecture'
+  const transformationRoles = experience.filter(
+    (e) => e.category === 'Business Transformation using AI' || e.category === 'AI & Systems Architecture'
   );
   const domainOperationsRoles = experience.filter(
     (e) => e.category === 'Domain Expertise & Operations'
@@ -61,7 +61,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
             <button
               onClick={handlePrint}
               aria-label="Print or save resume as PDF"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 dark:text-stone-900 dark:bg-stone-100 dark:hover:bg-stone-200 rounded-lg shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-stone-900 hover:bg-stone-800 dark:text-stone-900 dark:bg-stone-100 dark:hover:bg-stone-200 rounded-lg shadow-2xs transition-colors cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Print / Save as PDF</span>
@@ -81,7 +81,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
             <button
               onClick={onClose}
               aria-label="Close resume modal"
-              className="p-1.5 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+              className="p-1.5 text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" aria-hidden="true" />
             </button>
@@ -121,7 +121,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
             </div>
           </div>
 
-          {/* Professional Summary */}
+          {/* Professional Summary in clean standard paragraph formatting */}
           <div className="mb-6">
             <h2 className="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-2">
               Professional Summary
@@ -131,10 +131,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
             </p>
           </div>
 
-          {/* Education */}
+          {/* Education in clean standard paragraph formatting without lists or tick marks */}
           <div className="mb-6">
             <h2 className="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">
-              Education
+              Education &amp; Academic Credentials
             </h2>
             <div className="space-y-4">
               {education.map((edu) => (
@@ -147,14 +147,21 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
                     {edu.degree} — {edu.major}
                   </div>
                   {edu.honors && (
-                    <div className="text-amber-700 dark:text-amber-400 font-medium mt-0.5">
+                    <p className="text-amber-700 dark:text-amber-400 font-medium mt-0.5">
                       {edu.honors}
-                    </div>
+                    </p>
                   )}
                   {edu.coursework && (
-                    <div className="text-[11px] text-stone-600 dark:text-stone-400 print:text-stone-700 mt-1.5">
+                    <p className="text-[11px] text-stone-600 dark:text-stone-400 print:text-stone-700 mt-1.5 leading-relaxed">
                       <span className="font-semibold text-stone-800 dark:text-stone-200">Coursework: </span>
                       <span>{edu.coursework.join(' · ')}</span>
+                    </p>
+                  )}
+                  {edu.highlights && (
+                    <div className="space-y-1 mt-1 text-[11px] text-stone-600 dark:text-stone-400 leading-relaxed">
+                      {edu.highlights.map((hl, hIdx) => (
+                        <p key={hIdx}>{hl}</p>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -162,19 +169,19 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
             </div>
           </div>
 
-          {/* Experience Categorized */}
+          {/* Experience Categorized into clean standard paragraphs without bullets or tick marks */}
           <div className="mb-6">
             <h2 className="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">
               Professional Experience
             </h2>
 
-            {/* Sub-category 1: AI & Systems Architecture */}
+            {/* Sub-category 1: Current Focus: Business Transformation using AI */}
             <div className="mb-5">
               <h3 className="text-xs font-semibold text-stone-800 dark:text-stone-200 mb-3 pb-1 border-b border-stone-200 dark:border-stone-800">
-                Current Focus: AI &amp; Systems Architecture
+                Current Focus: Business Transformation using AI
               </h3>
               <div className="space-y-4">
-                {aiArchitectureRoles.map((exp) => (
+                {transformationRoles.map((exp) => (
                   <div key={exp.id} className="text-xs">
                     <div className="flex justify-between font-bold text-stone-900 dark:text-white print:text-black">
                       <span>
@@ -185,13 +192,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
                     <div className="text-stone-500 dark:text-stone-400 mb-1.5">
                       {exp.location}
                     </div>
-                    <ul className="list-disc list-outside pl-4 space-y-1 text-stone-600 dark:text-stone-300 print:text-stone-800">
+                    {/* Clean standard paragraph formatting without lists or tick marks */}
+                    <div className="space-y-1.5 text-stone-600 dark:text-stone-300 print:text-stone-800">
                       {exp.achievements.map((ach, idx) => (
-                        <li key={idx} className="leading-relaxed">
+                        <p key={idx} className="leading-relaxed">
                           {ach}
-                        </li>
+                        </p>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -214,62 +222,63 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, datas
                     <div className="text-stone-500 dark:text-stone-400 mb-1.5">
                       {exp.location}
                     </div>
-                    <ul className="list-disc list-outside pl-4 space-y-1 text-stone-600 dark:text-stone-300 print:text-stone-800">
+                    {/* Clean standard paragraph formatting without lists or tick marks */}
+                    <div className="space-y-1.5 text-stone-600 dark:text-stone-300 print:text-stone-800">
                       {exp.achievements.map((ach, idx) => (
-                        <li key={idx} className="leading-relaxed">
+                        <p key={idx} className="leading-relaxed">
                           {ach}
-                        </li>
+                        </p>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Honors & Certifications */}
+          {/* Honors & Certifications formatted as clean paragraphs without lists or tick marks */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
             <div>
               <h2 className="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-2">
                 Honors &amp; Awards
               </h2>
-              <ul className="space-y-1.5 text-xs text-stone-700 dark:text-stone-300">
+              <div className="space-y-1.5 text-xs text-stone-700 dark:text-stone-300">
                 {honors.map((h) => (
-                  <li key={h.id} className="flex justify-between">
+                  <p key={h.id} className="flex justify-between leading-normal">
                     <span className="font-medium">{h.title} ({h.institution.replace('CUNY ', '')})</span>
                     <span className="font-mono text-stone-400">{h.date}</span>
-                  </li>
+                  </p>
                 ))}
-              </ul>
+              </div>
             </div>
 
             <div>
               <h2 className="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-2">
                 Certifications &amp; Credentials
               </h2>
-              <ul className="space-y-1 text-xs text-stone-700 dark:text-stone-300">
+              <div className="space-y-1 text-xs text-stone-700 dark:text-stone-300">
                 {certifications.map((c) => (
-                  <li key={c.id}>
+                  <p key={c.id} className="leading-normal">
                     <span className="font-semibold">{c.name}</span> — <span className="text-stone-500">{c.issuer}</span>
-                  </li>
+                  </p>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
 
-          {/* Key Skills */}
+          {/* Key Domain Competencies formatted as clean standard paragraphs */}
           <div>
             <h2 className="text-xs font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-2">
-              Key Domain Competencies
+              Key Strategic &amp; Domain Competencies
             </h2>
             <div className="space-y-2 text-xs">
               {skills.map((cat, idx) => (
-                <div key={idx}>
+                <p key={idx} className="leading-relaxed">
                   <span className="font-semibold text-stone-900 dark:text-white">{cat.categoryName}: </span>
                   <span className="text-stone-600 dark:text-stone-300">
                     {cat.skills.map((s) => s.name).join(' · ')}
                   </span>
-                </div>
+                </p>
               ))}
             </div>
           </div>

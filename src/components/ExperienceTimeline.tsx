@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Check, Layers, Cpu, ShieldCheck } from 'lucide-react';
+import { Calendar, TrendingUp, Layers } from 'lucide-react';
 import { ExperienceItem } from '../types/portfolio';
 
 interface ExperienceTimelineProps {
@@ -8,8 +8,8 @@ interface ExperienceTimelineProps {
 
 export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experience }) => {
   // Separate into the two required overarching categories
-  const aiArchitectureRoles = experience.filter(
-    (e) => e.category === 'AI & Systems Architecture'
+  const transformationRoles = experience.filter(
+    (e) => e.category === 'Business Transformation using AI' || e.category === 'AI & Systems Architecture'
   );
   const domainOperationsRoles = experience.filter(
     (e) => e.category === 'Domain Expertise & Operations'
@@ -31,33 +31,33 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experien
             id="experience-heading"
             className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-stone-900 dark:text-stone-100 mb-4"
           >
-            Professional Experience &amp; Systems Impact
+            Professional Experience &amp; Strategic Impact
           </h2>
           <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed">
-            Organized across current graduate AI systems architecture and prior high-governance domain operations in healthcare data reconciliation, financial risk assessment, and aviation protocols.
+            Organized across current focus in strategic AI business transformation and high-governance domain operations across healthcare data reconciliation, financial risk assessment, and aviation safety protocols.
           </p>
         </div>
 
         {/* =========================================================
-            CATEGORY 1: Current Focus: AI & Systems Architecture
+            CATEGORY 1: Current Focus: Business Transformation using AI
            ========================================================= */}
         <div className="mb-16">
           <div className="flex items-center gap-2.5 pb-4 mb-8 border-b border-stone-200/80 dark:border-stone-800">
             <div className="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-700 dark:text-stone-300">
-              <Cpu className="w-4 h-4" />
+              <TrendingUp className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
               <h3 className="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100">
-                Current Focus: AI &amp; Systems Architecture
+                Current Focus: Business Transformation using AI
               </h3>
               <p className="text-xs text-stone-500 dark:text-stone-400">
-                Applied generative AI orchestration, vector retrieval systems, and higher-ed instructional platforms
+                Strategic AI implementation, executive governance frameworks, process re-engineering, and organizational value creation
               </p>
             </div>
           </div>
 
           <div className="relative pl-6 sm:pl-8 border-l border-stone-300 dark:border-stone-800 space-y-10">
-            {aiArchitectureRoles.map((item) => (
+            {transformationRoles.map((item) => (
               <article
                 key={item.id}
                 aria-labelledby={`role-${item.id}`}
@@ -99,22 +99,19 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experien
                     </div>
                   </div>
 
-                  {/* Achievements List */}
-                  <ul className="space-y-2 mt-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                  {/* Standard paragraph formatting without tick marks or bullets */}
+                  <div className="space-y-3 mt-4 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                     {item.achievements.map((ach, aIdx) => (
-                      <li key={aIdx} className="flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400 shrink-0 mt-0.5" aria-hidden="true" />
-                        <span>{ach}</span>
-                      </li>
+                      <p key={aIdx}>{ach}</p>
                     ))}
-                  </ul>
+                  </div>
 
-                  {/* Technologies / Focus Tags */}
+                  {/* Technologies / Strategic Focus */}
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-stone-500 dark:text-stone-400 mt-5 pt-3 border-t border-stone-100 dark:border-stone-800/80">
-                    <span className="font-medium text-stone-700 dark:text-stone-300">Focus:</span>
+                    <span className="font-medium text-stone-700 dark:text-stone-300">Strategic Focus:</span>
                     {item.technologies.map((tech, tIdx) => (
                       <React.Fragment key={tech}>
-                        <span className="font-mono text-[11px]">{tech}</span>
+                        <span className="font-mono text-[11px] text-stone-700 dark:text-stone-300">{tech}</span>
                         {tIdx < item.technologies.length - 1 && (
                           <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
                         )}
@@ -133,7 +130,7 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experien
         <div>
           <div className="flex items-center gap-2.5 pb-4 mb-8 border-b border-stone-200/80 dark:border-stone-800">
             <div className="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-700 dark:text-stone-300">
-              <ShieldCheck className="w-4 h-4" />
+              <Layers className="w-4 h-4" aria-hidden="true" />
             </div>
             <div>
               <h3 className="font-serif text-xl font-semibold text-stone-900 dark:text-stone-100">
@@ -179,22 +176,19 @@ export const ExperienceTimeline: React.FC<ExperienceTimelineProps> = ({ experien
                     </div>
                   </div>
 
-                  {/* Achievements List */}
-                  <ul className="space-y-2 mt-4 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+                  {/* Standard paragraph formatting without tick marks or bullets */}
+                  <div className="space-y-3 mt-4 text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                     {item.achievements.map((ach, aIdx) => (
-                      <li key={aIdx} className="flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400 shrink-0 mt-0.5" aria-hidden="true" />
-                        <span>{ach}</span>
-                      </li>
+                      <p key={aIdx}>{ach}</p>
                     ))}
-                  </ul>
+                  </div>
 
                   {/* Technologies / Focus Tags */}
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-stone-500 dark:text-stone-400 mt-5 pt-3 border-t border-stone-100 dark:border-stone-800/80">
-                    <span className="font-medium text-stone-700 dark:text-stone-300">Focus:</span>
+                    <span className="font-medium text-stone-700 dark:text-stone-300">Operational Focus:</span>
                     {item.technologies.map((tech, tIdx) => (
                       <React.Fragment key={tech}>
-                        <span className="font-mono text-[11px]">{tech}</span>
+                        <span className="font-mono text-[11px] text-stone-700 dark:text-stone-300">{tech}</span>
                         {tIdx < item.technologies.length - 1 && (
                           <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
                         )}

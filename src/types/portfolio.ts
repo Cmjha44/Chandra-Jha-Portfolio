@@ -25,7 +25,7 @@ export interface ExperienceItem {
   period: string;
   isCurrent?: boolean;
   department?: string;
-  category?: 'AI & Systems Architecture' | 'Domain Expertise & Operations';
+  category?: 'Business Transformation using AI' | 'Domain Expertise & Operations' | 'AI & Systems Architecture';
   achievements: string[];
   technologies: string[];
 }

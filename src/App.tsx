@@ -60,21 +60,8 @@ export default function App() {
     }
   }, [highContrast]);
 
-  // Portfolio dataset state with localStorage persistence
-  const [dataset, setDataset] = useState<PortfolioDataset>(() => {
-    try {
-      const saved = localStorage.getItem('chandra_portfolio_dataset_v14');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed.profile && parsed.projects) {
-          return parsed;
-        }
-      }
-    } catch {
-      // fallback
-    }
-    return initialPortfolioData;
-  });
+  // Fully static, read-only portfolio dataset ensuring sole administrative control
+  const dataset: PortfolioDataset = initialPortfolioData;
 
   // Modal visibility states
   const [isResumeOpen, setIsResumeOpen] = useState(false);

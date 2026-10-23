@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Award, Check } from 'lucide-react';
+import { Calendar, Award } from 'lucide-react';
 import { EducationItem, CertificationItem, HonorItem } from '../types/portfolio';
 
 interface EducationSectionProps {
@@ -25,7 +25,7 @@ export const EducationSection: React.FC<EducationSectionProps> = ({
             Education &amp; Academic Credentials
           </h2>
           <p className="text-base text-stone-600 dark:text-stone-300 leading-relaxed">
-            Graduate study in Generative AI and undergraduate foundation in Information Systems at the City University of New York.
+            Graduate study in Generative AI for business transformation and undergraduate foundation in Information Systems at the City University of New York.
           </p>
         </div>
 
@@ -47,20 +47,20 @@ export const EducationSection: React.FC<EducationSectionProps> = ({
                 </div>
 
                 <div className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400 font-mono">
-                  <Calendar className="w-3.5 h-3.5" />
+                  <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>{edu.period}</span>
                 </div>
               </div>
 
               {edu.honors && (
                 <div className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400 mt-1 mb-3">
-                  <Award className="w-3.5 h-3.5" />
+                  <Award className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>{edu.honors}</span>
                 </div>
               )}
 
               {edu.programOverview && (
-                <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed mt-2 mb-4">
+                <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mt-2 mb-4">
                   {edu.programOverview}
                 </p>
               )}
@@ -84,15 +84,13 @@ export const EducationSection: React.FC<EducationSectionProps> = ({
                 </div>
               )}
 
+              {/* Highlights in standard paragraph formatting without tick marks or bullets */}
               {edu.highlights && edu.highlights.length > 0 && (
-                <ul className="space-y-1.5 mt-4">
+                <div className="space-y-2 mt-4 pt-3 border-t border-stone-100 dark:border-stone-800 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                   {edu.highlights.map((hl, hIdx) => (
-                    <li key={hIdx} className="flex items-start gap-2 text-xs text-stone-600 dark:text-stone-300">
-                      <Check className="w-3.5 h-3.5 text-stone-400 shrink-0 mt-0.5" />
-                      <span>{hl}</span>
-                    </li>
+                    <p key={hIdx}>{hl}</p>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
           ))}

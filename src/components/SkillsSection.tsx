@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Cpu, ShieldCheck, Database, Check } from 'lucide-react';
+import { TrendingUp, ShieldCheck, Cpu, Briefcase } from 'lucide-react';
 import { SkillCategory } from '../types/portfolio';
 import { SupportedLanguage, translations } from '../data/translations';
 
@@ -15,22 +15,22 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, currentLan
     {
       title: t.pythonTitle,
       description: t.pythonDesc,
-      icon: Terminal
+      icon: TrendingUp
     },
     {
       title: t.aiStudioTitle,
       description: t.aiStudioDesc,
-      icon: Cpu
+      icon: ShieldCheck
     },
     {
       title: t.devSecOpsTitle,
       description: t.devSecOpsDesc,
-      icon: ShieldCheck
+      icon: Briefcase
     },
     {
       title: t.vectorDbTitle,
       description: t.vectorDbDesc,
-      icon: Database
+      icon: Cpu
     }
   ];
 
@@ -50,7 +50,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, currentLan
           </p>
         </div>
 
-        {/* 4 Highlighted Core Competencies */}
+        {/* 4 Highlighted Strategic Core Competencies */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
           {coreCompetencies.map((comp) => {
             const Icon = comp.icon;
@@ -61,7 +61,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, currentLan
               >
                 <div>
                   <div className="w-8 h-8 rounded-lg bg-stone-200/60 dark:bg-stone-800 flex items-center justify-center mb-3 text-stone-700 dark:text-stone-300">
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-4 h-4" aria-hidden="true" />
                   </div>
                   <h3 className="font-serif text-base font-semibold text-stone-900 dark:text-stone-100 mb-1.5">
                     {comp.title}
@@ -75,27 +75,25 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, currentLan
           })}
         </div>
 
-        {/* Categorized Skills Breakdown */}
+        {/* Categorized Skills Breakdown in clean standard paragraph formatting */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((cat, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-white dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800 shadow-2xs"
+              className="p-6 rounded-2xl bg-white dark:bg-stone-900/80 border border-stone-200/80 dark:border-stone-800 shadow-2xs flex flex-col justify-between"
             >
-              <h4 className="font-serif text-base font-semibold text-stone-900 dark:text-stone-100 mb-1">
-                {cat.categoryName}
-              </h4>
-              <p className="text-xs text-stone-500 dark:text-stone-400 mb-4 leading-relaxed">
-                {cat.summary}
-              </p>
-
-              <div className="space-y-2">
-                {cat.skills.map((skill, sIdx) => (
-                  <div
-                    key={sIdx}
-                    className="flex items-center justify-between text-xs py-1 border-b border-stone-100 dark:border-stone-800/60 last:border-b-0"
-                  >
+              <div>
+                <h4 className="font-serif text-base font-semibold text-stone-900 dark:text-stone-100 mb-1.5">
+                  {cat.categoryName}
+                </h4>
+                <p className="text-xs text-stone-500 dark:text-stone-400 mb-3.5 leading-relaxed">
+                  {cat.summary}
+                </p>
+                {/* Standard paragraph formatting without tick marks or bullets */}
+                <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed pt-3 border-t border-stone-100 dark:border-stone-800">
+                  {cat.skills.map((skill, sIdx) => (
                     <span
+                      key={sIdx}
                       className={
                         skill.highlighted
                           ? 'font-medium text-stone-900 dark:text-stone-100'
@@ -103,12 +101,10 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ skills, currentLan
                       }
                     >
                       {skill.name}
+                      {sIdx < cat.skills.length - 1 ? ' · ' : ''}
                     </span>
-                    {skill.highlighted && (
-                      <Check className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400 shrink-0" />
-                    )}
-                  </div>
-                ))}
+                  ))}
+                </p>
               </div>
             </div>
           ))}

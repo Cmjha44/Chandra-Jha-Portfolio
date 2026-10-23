@@ -3,10 +3,10 @@ import { PortfolioDataset } from '../types/portfolio';
 export const initialPortfolioData: PortfolioDataset = {
   profile: {
     name: 'Chandra Jha',
-    headline: 'Systems-level AI management and workflow orchestration.',
-    subheadline: 'Master of Science in Generative AI Candidate @ CUNY SPS · Information Systems · Six Sigma Green Belt',
+    headline: 'Business Transformation using AI.',
+    subheadline: 'Master of Science in Generative AI Candidate @ CUNY SPS · Strategic AI Implementation · Six Sigma Green Belt',
     summary:
-      'I specialize in systems-level AI management and workflow orchestration, translating advanced Generative AI capabilities into reliable, human-centered organizational processes. Alongside my technical and administrative background in early childhood healthcare data audits and life insurance protection, I draw balance and perspective from hiking mountain trails, exploring quiet natural landscapes, and thoughtful, unhurried adventures.',
+      'I specialize in Business Transformation using AI, translating emerging Generative AI capabilities into sustainable enterprise strategies, management frameworks, and automated organizational processes. My work focuses on strategic AI implementation, executive decision-making, and process re-engineering to create measurable organizational value. Alongside deep administrative experience in healthcare compliance auditing and financial risk advisory, I draw balance and perspective from hiking mountain trails, exploring quiet natural landscapes, and unhurried wilderness adventures.',
     location: 'New York City Metropolitan Area',
     email: 'chandra.jha44@gmail.com',
     linkedin: 'https://www.linkedin.com/in/chandrajha44',
@@ -19,7 +19,7 @@ export const initialPortfolioData: PortfolioDataset = {
     {
       value: 'MS AI',
       label: 'CUNY SPS Scholar',
-      caption: 'Applied generative AI architecture and organizational workflow design'
+      caption: 'Executive AI strategy, business transformation, and process automation'
     },
     {
       value: '6 Yrs',
@@ -39,48 +39,49 @@ export const initialPortfolioData: PortfolioDataset = {
   ],
   experience: [
     /* ----------------------------------------------------
-       Category 1: Current Focus: AI & Systems Architecture
+       Category 1: Current Focus: Business Transformation using AI
        ---------------------------------------------------- */
     {
       id: 'cuny-sps-research',
       company: 'CUNY School of Professional Studies',
-      role: 'Generative AI & Systems Architecture Scholar',
+      role: 'Generative AI Scholar & Business Transformation Lead',
       location: 'New York, NY',
       period: 'January 2026 — Present',
       isCurrent: true,
-      category: 'AI & Systems Architecture',
-      department: 'Graduate Applied AI Program',
+      category: 'Business Transformation using AI',
+      department: 'Graduate Applied Generative AI Program',
       achievements: [
-        'Researches systems-level generative AI architectures, retrieval-augmented generation (RAG) orchestration, and vector indexing governance.',
-        'Designs automated prompt engineering protocols and state-based agentic workflows to eliminate organizational process bottlenecks.',
-        'Evaluates enterprise AI governance frameworks, ensuring explainability, ethical boundaries, and data security in automated decision loops.',
-        'Analyzes machine learning ecosystems to architect practical integration bridges between legacy enterprise systems and modern LLM platforms.'
+        'Spearheading applied research into business transformation frameworks powered by Generative AI at CUNY SPS, focusing on how executive decision-makers and transformation officers can solve real-world operational bottlenecks and automate high-value organizational processes.',
+        'Developing executive AI governance and risk management structures, establishing formal guidelines for model explainability, regulatory compliance, data privacy, and ethical operational boundaries across automated decision loops.',
+        'Analyzing enterprise technology ecosystems to architect strategic bridges between legacy organizational systems and modern generative platforms, prioritizing business ROI and sustainable change management over raw technical novelty.',
+        'Designing automated prompt governance protocols and state-based agentic workflows to systematically streamline organizational reporting and administrative decision latency.'
       ],
       technologies: [
-        'Vector Databases',
-        'RAG Orchestration',
-        'LangChain Framework',
-        'Prompt Governance',
-        'Agentic Workflows',
-        'DevSecOps Principles'
+        'Business Transformation',
+        'Strategic AI Implementation',
+        'Process Automation',
+        'AI Governance & Risk',
+        'Executive Decision-Making',
+        'Change Management'
       ]
     },
     {
       id: 'laguardia-ida',
       company: 'LaGuardia Community College (CUNY)',
-      role: 'Instructional Design & Systems Technology Mentor',
+      role: 'Instructional Systems & Digital Transformation Mentor',
       location: 'New York City Metropolitan Area',
       period: 'February 2024 — December 2024',
       isCurrent: false,
-      category: 'AI & Systems Architecture',
+      category: 'Business Transformation using AI',
       department: 'Center for Teaching and Learning (CTL)',
       achievements: [
-        'Administered and streamlined academic instructional platforms across departments, optimizing LMS workflows within D2L Brightspace and Blackboard.',
-        'Supervised and mentored cohorts of Student Technology Mentors (STMs), establishing standardized diagnostic troubleshooting and ticket resolution workflows.',
-        'Architected digital ePortfolio frameworks ensuring full compliance with WCAG 2.1 AA accessibility standards across undergraduate Capstone studios.',
-        'Facilitated faculty development workshops demonstrating modern digital tools and technology-augmented classroom workflows.'
+        'Led operational transformation and institutional rollout of digital instructional platforms across academic departments, optimizing LMS workflows within D2L Brightspace and Blackboard.',
+        'Supervised and mentored cohorts of Student Technology Mentors, instituting standardized diagnostic troubleshooting procedures and SLA-driven ticket resolution workflows that reduced operational friction.',
+        'Architected accessible digital ePortfolio frameworks ensuring full compliance with WCAG 2.1 AA standards across undergraduate Capstone studios.',
+        'Facilitated faculty and administrative development workshops demonstrating modern digital tools and technology-augmented classroom workflows.'
       ],
       technologies: [
+        'Digital Transformation',
         'Instructional Systems Design',
         'D2L Brightspace LMS',
         'ePortfolio Architecture',
@@ -192,7 +193,7 @@ export const initialPortfolioData: PortfolioDataset = {
       period: 'January 2026 — Present',
       honors: 'Graduate Degree Candidate',
       programOverview:
-        'One of the first graduate programs in the U.S. dedicated exclusively to generative artificial intelligence, launched in Spring 2026. Designed for decision-makers seeking to understand the modern AI solution ecosystem, solve real-world problems, and automate organizational processes with high governance standards.',
+        'One of the first graduate programs in the U.S. dedicated exclusively to generative artificial intelligence, launched in Spring 2026. Designed for decision-makers, tech-savvy executives, and business transformation officers seeking to understand the modern AI solution ecosystem, solve real-world problems, and automate organizational processes beyond attaining AI literacy.',
       coursework: [
         'Machine Learning',
         'Introduction to Generative AI',
@@ -206,8 +207,8 @@ export const initialPortfolioData: PortfolioDataset = {
         'Capstone Project'
       ],
       highlights: [
-        'Focus on systems-level AI management, vector database retrieval, and workflow orchestration',
-        'Study of responsible AI governance, prompt programming, and agentic workflows'
+        'Graduate curriculum designed for tech-savvy executives, business transformation officers, and organizational decision-makers.',
+        'Focus on strategic AI implementation, executive risk governance, and process automation to generate measurable business value.'
       ]
     },
     {
@@ -218,8 +219,8 @@ export const initialPortfolioData: PortfolioDataset = {
       period: 'January 2025 — February 2026',
       honors: "Dean's List (June 2025)",
       highlights: [
-        'Study of Enterprise Systems Architecture, Database Management, and Systems Analysis & Design',
-        'IT governance, information security fundamentals, and business systems design'
+        'Core curriculum in Enterprise Systems Architecture, Database Management, and Systems Analysis & Design.',
+        'Emphasis on IT governance, information security fundamentals, and business systems design.'
       ]
     },
     {
@@ -230,8 +231,8 @@ export const initialPortfolioData: PortfolioDataset = {
       period: 'September 2021 — August 2024',
       honors: "Dean's List (3 Semesters) · Graduated with Honors",
       highlights: [
-        'Core quantitative grounding in statistics, economics, and business organization',
-        'Instructional technology leadership and peer student mentorship'
+        'Quantitative foundation in statistical methods, economics, and business organization.',
+        'Instructional technology leadership and peer student mentorship across academic laboratories.'
       ]
     }
   ],
@@ -411,13 +412,13 @@ export const initialPortfolioData: PortfolioDataset = {
   ],
   skills: [
     {
-      categoryName: 'Core Technical Competencies',
-      summary: 'Systems-level AI orchestration, data retrieval, and governance',
+      categoryName: 'Core Transformation Competencies',
+      summary: 'Strategic AI adoption, executive governance, and process re-engineering',
       skills: [
-        { name: 'Python programming', highlighted: true },
-        { name: 'Google AI Studio orchestration', highlighted: true },
-        { name: 'DevSecOps governance', highlighted: true },
-        { name: 'Vector databases', highlighted: true }
+        { name: 'Strategic AI Implementation', highlighted: true },
+        { name: 'Executive AI Governance & Compliance', highlighted: true },
+        { name: 'Business Process Transformation (Six Sigma)', highlighted: true },
+        { name: 'AI Ecosystems & Enterprise Integration', highlighted: true }
       ]
     },
     {
